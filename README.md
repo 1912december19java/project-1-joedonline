@@ -54,6 +54,7 @@
 ### Backend stuff
 - ##### TestCases: Users
   * `testEmployeeCanLogin()`
+  * `testWrongPasswordFailsToAuthenticate()`
 
 <br><br>
 
