@@ -39,8 +39,8 @@
 |-|-|-|-|
 | An Employee can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
 | A Manager can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
-| An Employee can logout | *in progress* | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
-| A Manager can logout | *in progress* | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
+| An Employee can logout | done | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
+| A Manager can logout | done | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
 |  |  |  |  |
 
 <br><br>
