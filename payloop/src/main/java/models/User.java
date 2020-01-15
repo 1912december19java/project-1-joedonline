@@ -7,8 +7,10 @@ public class User {
 	private String userPass;
 	private String userRole;
 	private String email;
+	private Boolean isLoggedIn = false;
 
-	public User() {}
+	public User() {
+	}
 
 	public User(String employeeId, String userName, String userPass, String userRole, String email) {
 		this.employeeId = employeeId;
@@ -58,10 +60,18 @@ public class User {
 		this.email = email;
 	}
 
+	public Boolean isLoggedIn() {
+		return isLoggedIn;
+	}
+
+	public void setIsLoggedIn(Boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+	}
+
 	@Override
 	public String toString() {
 		return "User [employeeId=" + employeeId + ", userName=" + userName + ", userPass=" + userPass + ", userRole="
-				+ userRole + ", email=" + email + "]";
+				+ userRole + ", email=" + email + ", isLoggedIn=" + isLoggedIn + "]";
 	}
 
 }

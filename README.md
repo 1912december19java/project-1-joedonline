@@ -7,7 +7,7 @@
 
 ### Project Structure
 
-##### *`src/main`*
+##### *`src/main/java`*
 - ##### `exceptions/`
 - ##### `models/`
   * | `User.java`
@@ -26,7 +26,7 @@
 
 <br>
 
-##### *`src/tests`*
+##### *`src/test/java`*
 - | `TestLoginLogout.java`
 
 <br><br>

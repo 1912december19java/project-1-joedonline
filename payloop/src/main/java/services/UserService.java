@@ -1,6 +1,7 @@
 package services;
 
 
+import models.User;
 import repositories.dao.UserDAOImpl;
 
 
@@ -14,6 +15,10 @@ public class UserService {
 	
 	public Boolean authenticate(String username, String password) {
 		return userDaoImpl.authenticate(username, password);
+	}
+	
+	public void invalidate(User user) {
+		userDaoImpl.invalidate(user);
 	}
 	
 }

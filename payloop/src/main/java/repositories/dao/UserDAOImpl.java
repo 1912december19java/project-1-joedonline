@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import models.User;
 import repositories.queries.Actions;
 import repositories.queries.MyStatements;
 import repositories.utilities.ConnectionManager;
@@ -49,6 +50,11 @@ public class UserDAOImpl extends DataAccessObject implements UserDAO {
 		}
 		
 		return pw.equalsIgnoreCase(password);
+	}
+
+	@Override
+	public void invalidate(User user) {
+		user.setIsLoggedIn(false);
 	}
 
 }

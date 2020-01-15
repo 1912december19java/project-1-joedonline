@@ -10,12 +10,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import models.User;
 import repositories.dao.UserDAOImpl;
 import repositories.utilities.ConnectionManager;
 import services.UserService;
 
 public class TestLoginLogout {
 	
+	User user = new User();
 	Connection connection;
 	UserDAOImpl userDao = new UserDAOImpl();
 
@@ -43,14 +45,26 @@ public class TestLoginLogout {
 	}
 	
 	@Test
-	public void testEmployeeCanLogin() {
+	public void testRightPasswordSuccessfullyAuthenticates() {
 		UserService userService = new UserService(userDao);		
 		assertTrue("Employee is not able to login", userService.authenticate("babsbunny", "herpassword"));
 	}
 	
 	@Test
-	public void testEmployeeCanLogout() {
+	public void testEmployeeIsRedirectedToEmployeeHomepageAfterSuccessfulLogin() {
 		fail("FIRST FAIL / fail first");
+	}
+	
+	@Test
+	public void testEmployeeIsRedirectedToLoginPageAfterLogout() {
+//		fail("FIRST FAIL / fail first");
+	}
+	
+	@Test
+	public void testEmployeeCanLogout() {
+		UserService userService = new UserService(userDao);
+		userService.invalidate(user);
+		assertTrue(user.isLoggedIn() == false);
 	}
 
 }
