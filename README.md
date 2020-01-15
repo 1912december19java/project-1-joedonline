@@ -5,14 +5,29 @@
 ---
 ## DOCS
 
-### Project Arch
+### Project Structure
 
+##### *`src/main`*
 - ##### `exceptions/`
 - ##### `models/`
-- ##### `repositories/`
+  * | `User.java`
+- ##### `repositories/dao/`
+  * | `UserDAO.java`
+  * | `UserDAOImpl.java`
+- ##### `repositories/queries/`
+  * | `Actions.java`
+  * | `MyStatements.java`
+- ##### `repositories/utilities/`
   * | `ConnectionManager.java`
+  * | `DataAccessObject.java`
 - ##### `services/`
+  * | `UserService.java`
 - ##### `servlets/`
+
+<br>
+
+##### *`src/tests`*
+- | `TestLoginLogout.java`
 
 <br><br>
 
@@ -22,8 +37,10 @@
 
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
-| An Employee can login | *in progress* | 1/14/2020 |  |
-| A Manager can login | *in progress* | 1/14/2020 |  |
+| An Employee can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
+| A Manager can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
+| An Employee can logout | *in progress* | `1/15 :: 00:18:02` |  |
+| A Manager can logout | *in progress* | `1/15 :: 00:18:02` |  |
 
 <br><br>
 
@@ -44,7 +61,7 @@
 ## User stories:
 - ~~An Employee can login~~
 - An Employee can view the Employee Homepage
-- An Employee can logout
+- ~~An Employee can logout~~
 - An Employee can submit a reimbursement request
 - An Employee can upload an image of his/her receipt as part of the reimbursement request
 - An Employee can view their pending reimbursement requests
@@ -57,7 +74,7 @@
 
 - ~~A Manager can login~~
 - A Manager can view the Manager Homepage
-- A Manager can logout
+- ~~A Manager can logout~~
 - A Manager can approve/deny pending reimbursement requests
 - A Manager can view all pending requests from all employees
 - A Manager can view images of the receipts from reimbursement requests
