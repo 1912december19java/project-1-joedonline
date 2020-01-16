@@ -8,6 +8,7 @@ public class User {
 	private String userRole;
 	private String email;
 	private Boolean isLoggedIn = false;
+	private String path;
 
 	public User() {
 	}
@@ -60,18 +61,25 @@ public class User {
 		this.email = email;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	public Boolean isLoggedIn() {
 		return isLoggedIn;
 	}
 
-	public void setIsLoggedIn(Boolean isLoggedIn) {
-		this.isLoggedIn = isLoggedIn;
+	public void setIsLoggedIn(boolean b) {
+		this.isLoggedIn = b;
 	}
 
 	@Override
 	public String toString() {
 		return "User [employeeId=" + employeeId + ", userName=" + userName + ", userPass=" + userPass + ", userRole="
-				+ userRole + ", email=" + email + ", isLoggedIn=" + isLoggedIn + "]";
+				+ userRole + ", email=" + email + ", isLoggedIn=" + isLoggedIn + ", path=" + path + "]";
 	}
-
 }
