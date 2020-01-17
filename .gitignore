@@ -123,3 +123,6 @@ buildNumber.properties
 .history
 
 # End of https://www.gitignore.io/api/java,maven,eclipse,visualstudiocode
+
+/apps/
+/Servers/
