@@ -47,9 +47,9 @@
 | An Employee can view the Employee Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
 | A Manager can view the Manager Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
 | An Employee can view their information | *in progress* | `1/18 :: 15:54:44` |  |
-| An Employee can submit a reimbursement request | *in progress* | `1/18 :: 15:54:44` |  |
 | An Employee can view their pending reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
 | An Employee can view their resolved reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
+| An Employee can submit a reimbursement request | *in progress* | `1/18 :: 15:54:44` |  |
 |  |  |  |  |
 
 <br><br>
@@ -102,3 +102,70 @@
 - Servlet
 - HTML/JS/CSS
 - JUnit
+
+<br><br>
+
+### REST API Documentation
+- [Docs Page:  TBD](#tbd)
+
+- ##### Login
+  * **Request method:** `POST`
+  * **Request endpoint:** `v2/user/login`
+  * **Request body:** 
+  
+    ```
+    { 
+      "username": "name", 
+      "password": "password"
+    }
+    ```
+
+  * **Request Content-Type:** `application/json`
+  * **Response body:** 
+    
+    ```
+    {
+      "path": "/logout",
+      "homepage": "/user/employee",
+      "isLoggedIn": true,
+      "message": "User is logged in."
+    }
+    ```
+
+<br>
+
+- ##### Logout
+  * **Request method:** `GET`
+  * **Request endpoint:** `v2/user/logout`
+  * **Response body:** 
+    
+    ```
+    {
+      "path": "/login",
+      "isLoggedIn": false,
+      "message": "User is logged out."
+    }
+    ```
+
+<br>
+
+- ##### Employee Information
+  * **Request method:** `GET`
+  * **Request endpoint:** `v2/user/employee`
+  * **Response body:**
+
+    ```
+    {
+      "employee_id": <employee_id>,
+      "firstName": <firstname>,
+      "lastName": <lastname>,
+      "city": <city>,
+      "state": <state>,
+      "zipcode": <zipcode>,
+      "username": <username>,
+      "reimbursement_pending": <reimbursement_pending>,
+      "reimbursement_resolved": <reimbursement_resolved>
+    }
+    ```
+
+<br><br>
