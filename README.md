@@ -46,7 +46,10 @@
 | A Manager can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
 | An Employee can view the Employee Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
 | A Manager can view the Manager Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
+| An Employee can view their information | *in progress* | `1/18 :: 15:54:44` |  |
 | An Employee can submit a reimbursement request | *in progress* | `1/18 :: 15:54:44` |  |
+| An Employee can view their pending reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
+| An Employee can view their resolved reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
 |  |  |  |  |
 
 <br><br>
@@ -73,9 +76,9 @@
 - ~~An Employee can logout~~
 - ~~An Employee can submit a reimbursement request~~
 - An Employee can upload an image of his/her receipt as part of the reimbursement request
-- An Employee can view their pending reimbursement requests
-- An Employee can view their resolved reimbursement requests
-- An Employee can view their information
+- ~~An Employee can view their pending reimbursement requests~~
+- ~~An Employee can view their resolved reimbursement requests~~
+- ~~An Employee can view their information~~
 - An Employee can update their information
 - An Employee receives an email when one of their reimbursement requests is resolved (optional)
 
