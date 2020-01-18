@@ -58,14 +58,29 @@
 ### DB Design
 - ##### Users
   * db name: `ers_users`
-  * columns: `employee_id`, `username`, `userpass`, `userrole`
+  * columns: `username`, `userpass`, `userrole`, `email`, `employee_id`
+
+<br>
+
+- ##### Employees
+  * db name: `employees`
+  * columns: `employee_id`, `firstName`, `lastName`, `city`, `state`, `zipcode`
 
 <br><br>
 
 ### Backend stuff
 - ##### TestCases: Users
-  * `testEmployeeCanLogin()`
   * `testWrongPasswordFailsToAuthenticate()`
+  * `testRightPasswordSuccessfullyAuthenticates()`
+  * `testLoginPathIsSentBackToUserAfterSuccessfulLogIn()`
+  * `testLogoutPathIsSentBackToUserAfterSuccessfulLogOut()`
+  * `testEmployeeCanLogout()`
+  * `testTheRightHomepageURLIsSentBackToClientAfterEmployeeLogsIn()`
+
+<br>
+
+- ##### TestCases: Employee
+  * `testEmployeeCanViewOnlyTheirInformationOnEmployeePageAccordingToEmployeeIdURL()`
 
 <br><br>
 
@@ -109,6 +124,44 @@
 ### REST API Documentation
 - [Docs Page:  TBD](#tbd)
 
+- ##### Employee Information
+  * **Request method:** `GET`
+  * **Request endpoint:** `v2/user/employee`
+  * **Response body:**
+
+    ```
+    {
+      "employee_id": <employee_id>,
+      "firstName": <firstname>,
+      "lastName": <lastname>,
+      "city": <city>,
+      "state": <state>,
+      "zipcode": <zipcode>,
+      "email": <email>,
+      "username": <username>,
+      "userrole": <userrole>
+    }
+    ```
+
+<br>
+
+- ##### Employee Reimbursements ViewAll
+  * **Request method:** `GET`
+  * **Request endpoint:** `v2/reimbursements/all`
+  * **Response body:**
+
+    ```
+    {
+      "reimbursement_id": <reimbursement_id>,
+      "reimbursement_amount": <reimbursement_amount>,
+      "reimbursement_status": <"pending" or "resolved">,
+      "reimbursement_date_submitted": Date,
+      "reimbursement_date_approved": Date
+    }
+    ```
+
+<br>
+
 - ##### Login
   * **Request method:** `POST`
   * **Request endpoint:** `v2/user/login`
@@ -145,27 +198,6 @@
       "path": "/login",
       "isLoggedIn": false,
       "message": "User is logged out."
-    }
-    ```
-
-<br>
-
-- ##### Employee Information
-  * **Request method:** `GET`
-  * **Request endpoint:** `v2/user/employee`
-  * **Response body:**
-
-    ```
-    {
-      "employee_id": <employee_id>,
-      "firstName": <firstname>,
-      "lastName": <lastname>,
-      "city": <city>,
-      "state": <state>,
-      "zipcode": <zipcode>,
-      "username": <username>,
-      "reimbursement_pending": <reimbursement_pending>,
-      "reimbursement_resolved": <reimbursement_resolved>
     }
     ```
 

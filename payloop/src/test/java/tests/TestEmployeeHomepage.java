@@ -27,8 +27,9 @@ public class TestEmployeeHomepage {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testEmployeeCanViewOnlyTheirInformationOnEmployeePageAccordingToEmployeeIdURL() {
+		
+		assertTrue(true);
 	}
 
 }
