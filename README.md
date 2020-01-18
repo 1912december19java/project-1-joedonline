@@ -105,6 +105,7 @@
 
 <br><br>
 
+---
 ### REST API Documentation
 - [Docs Page:  TBD](#tbd)
 
