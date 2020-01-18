@@ -35,16 +35,19 @@
 
 ## PROJECT TRACKER
 
+### `REST API`
+
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
-| An Employee can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
-| A Manager can login | done | `1/14 :: 18:14:12` | `1/15 :: 00:04:49` |
-| An Employee can logout | done | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
-| A Manager can logout | done | `1/15 :: 00:18:02` | `1/15 :: 13:34:20` |
+| An Employee can login | done | `1/14 :: 18:14:12` | `1/17 :: 22:33:22` |
+| A Manager can login | done | `1/14 :: 18:14:12` | `1/17 :: 22:33:22` |
+| An Employee can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
+| A Manager can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
 |  |  |  |  |
 
 <br><br>
 
+---
 ### DB Design
 - ##### Users
   * db name: `ers_users`

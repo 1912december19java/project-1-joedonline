@@ -54,7 +54,6 @@ public class TestLoginLogout {
 	@Test
 	public void testLoginPathIsSentBackToUserAfterSuccessfulLogIn() {
 		
-//		String host = "http://localhost:8080";
 		String endpoint = "/payloop/user/login";
 		String[] path = endpoint.split("/");
 		
@@ -73,7 +72,6 @@ public class TestLoginLogout {
 	@Test
 	public void testLogoutPathIsSentBackToUserAfterSuccessfulLogOut() {
 
-//		String host = "http://localhost:8080";
 		String endpoint = "/payloop/user/logout";
 		String[] path = endpoint.split("/");
 		

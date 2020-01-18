@@ -28,6 +28,6 @@
 
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
-		<url-pattern>/user/*</url-pattern>
+		<url-pattern>/v2/user/*</url-pattern>
 	</servlet-mapping>
 </web-app>

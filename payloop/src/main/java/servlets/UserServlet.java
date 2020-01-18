@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import exceptions.InvalidRequestException;
 import models.User;
 
 /**
@@ -31,24 +34,20 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String[] endpoints = request.getRequestURI().split("/");
 		
-		System.out.println("[doGet] request.getRequestURI() " + request.getRequestURI());
-
-		switch (endpoints[3]) {
+		switch (endpoints[4]) {
 		case "logout":
-			user.setPath(endpoints[3]);
-			String jsonLogout = "{ \"path\": \"/logout\", \"isLoggedIn\": false, \"message\": \"User is logged out.\" }";
+			user.setPath(endpoints[4]);
+			String jsonLogout = "{ \"path\": \"/login\", \"isLoggedIn\": false, \"message\": \"User is logged out.\" }";
 			response.getWriter().write(jsonLogout);
 			break;
-		case "login":
-			user.setPath(endpoints[3]);
-			String jsonLogin = "{ \"path\": \"/login\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }";
-			response.getWriter().write(jsonLogin);
-			break;
 		default:
-			System.out.println("STATUS 404 - Page not found");
-			// CUSTOM EXCEPTION OR REDIRECT HERE
+			try {
+				throw new InvalidRequestException();
+			} catch (InvalidRequestException e) {
+				response.getWriter().write("{ \"path\": \"\", \"message\": \"Invalid request.\" }");
+			}
+			
 		}
-
 	}
 
 	/**
@@ -57,7 +56,24 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		String qs = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+		String[] endpoints = request.getRequestURI().split("/");
+		
+		switch (endpoints[4]) {
+		case "login":
+			
+			// JDBC here...
+			
+			response.getWriter().write("{ \"path\": \"/logout\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
+			System.out.println("[UserServlet] POST qs " + qs);
+			break;
+		default:
+			try {
+				throw new InvalidRequestException();
+			} catch (InvalidRequestException e) {
+				response.getWriter().write("{ \"path\": \"\", \"message\": \"Invalid request.\" }");
+			}
+		}
 	}
 
 }
