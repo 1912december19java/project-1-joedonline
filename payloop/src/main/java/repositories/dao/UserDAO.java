@@ -8,5 +8,6 @@ public interface UserDAO {
 
 	Boolean authenticate(String username, String password) throws SQLException;
 	void invalidate(User user);
+	User getUserByUsername(String username);
 	
 }

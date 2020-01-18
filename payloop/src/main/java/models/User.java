@@ -62,6 +62,7 @@ public class User {
 	}
 
 	public String getPath() {
+		if (this.path == null) this.path = "";
 		return path;
 	}
 

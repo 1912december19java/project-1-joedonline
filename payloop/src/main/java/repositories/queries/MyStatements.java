@@ -7,12 +7,14 @@ import repositories.utilities.ConnectionManager;
 
 public final class MyStatements {
 	
-	public static PreparedStatement sendQuery(String statement) {
+	public static PreparedStatement sendQuery(String statement) throws SQLException {
 		
-		PreparedStatement stmt = null;
+		System.out.println("[MyStatements] statement " + statement);
+		PreparedStatement stmt = ConnectionManager.getConnection().prepareStatement(statement);
+//		System.out.println("[MyStatements] stmt " + stmt);
 		
 		try {
-			stmt = ConnectionManager.getConnection().prepareStatement(statement);			
+			stmt = ConnectionManager.getConnection().prepareStatement(statement);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			// CUSTOM EXCEPTION WILL GO HERE

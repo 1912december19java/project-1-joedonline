@@ -14,11 +14,15 @@ public class ConnectionManager {
 		String endpoint = "jdbc:postgresql://" + System.getenv("payloop-dbEndpoint") + ":5432" + "/" + dbname;
 		String password = System.getenv("payloop-dbPassword");
 		String username = System.getenv("payloop-dbUsername");
+		
+//		String dbname = System.getenv("local-payloop-dbName");
+//		String endpoint = "jdbc:postgresql://" + System.getenv("local-payloop-dbEndpoint") + ":5432" + "/" + dbname;
+//		String password = System.getenv("local-payloop-dbPassword");
+//		String username = System.getenv("local-payloop-dbUsername");
 
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
-//			System.out.println("ERROR: " + e);
 			e.printStackTrace();
 		}
 
@@ -31,7 +35,7 @@ public class ConnectionManager {
 	}
 
 	public static Connection getConnection() {
-//		System.out.println("[ConnectionManager] connection -> " + connection);
+		System.out.println("[ConnectionManager] connection " + connection);
 		return connection;
 	}
 

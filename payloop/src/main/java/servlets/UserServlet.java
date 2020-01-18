@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -9,15 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import exceptions.InvalidRequestException;
+import exceptions.InvalidUsernameOrPasswordException;
 import models.User;
+import repositories.dao.UserDAOImpl;
+import services.UserService;
 
 /**
  * Servlet implementation class UserServlet
  */
-@WebServlet(name = "UserServlet", urlPatterns = { "/user/*" })
+@WebServlet(name = "UserServlet", urlPatterns = { "/v2/user/*" })
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -56,15 +63,57 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String qs = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		String[] endpoints = request.getRequestURI().split("/");
 		
+		UserService userService;
 		switch (endpoints[4]) {
 		case "login":
 			
-			// JDBC here...
+			JsonNode rootNode = objMapper.readTree(qs);			
+			List<String> creds = new ArrayList<String>(); 
 			
-			response.getWriter().write("{ \"path\": \"/logout\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
+			rootNode.forEach((s) -> {
+				creds.add(s.asText());
+			});
+			
+			String uname = creds.get(0);
+			String upass = creds.get(1);
+			
+			UserDAOImpl userDao = new UserDAOImpl();
+			String homepageURL = "";
+			userService = new UserService(userDao);
+			Boolean isAuthenticated = false;
+			
+			try {
+				isAuthenticated = userService.authenticate(uname, upass);
+				System.out.println("[UserServlet] isAuthenticated " + isAuthenticated);
+				
+				if (isAuthenticated) {		
+					user = userService.getUserByUsername(uname);
+					System.out.println("[UserServlet] user.getUserRole() " + user.getUserRole());
+					
+					switch (user.getUserRole()) {
+					case "employee":
+						homepageURL = "/user/employee";
+						break;
+					case "manager":
+						homepageURL = "/user/manager";
+						break;
+					default:
+						homepageURL = "/user/invalid";
+					}
+				} else {
+					throw new InvalidUsernameOrPasswordException();
+				}
+				
+			} catch (SQLException | InvalidUsernameOrPasswordException e1) {
+				e1.printStackTrace();
+			}
+			
+			response.getWriter().write("{ \"path\": \"/logout\", \"homepage\": \"" + homepageURL + "\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
+			
 			System.out.println("[UserServlet] POST qs " + qs);
 			break;
 		default:
@@ -74,6 +123,6 @@ public class UserServlet extends HttpServlet {
 				response.getWriter().write("{ \"path\": \"\", \"message\": \"Invalid request.\" }");
 			}
 		}
-	}
+	} // END doPost()
 
-}
+} // END class

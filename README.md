@@ -43,6 +43,8 @@
 | A Manager can login | done | `1/14 :: 18:14:12` | `1/17 :: 22:33:22` |
 | An Employee can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
 | A Manager can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
+| An Employee can view the Employee Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
+| A Manager can view the Manager Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
 |  |  |  |  |
 
 <br><br>
@@ -65,7 +67,7 @@
 ---
 ## User stories:
 - ~~An Employee can login~~
-- An Employee can view the Employee Homepage
+- ~~An Employee can view the Employee Homepage~~
 - ~~An Employee can logout~~
 - An Employee can submit a reimbursement request
 - An Employee can upload an image of his/her receipt as part of the reimbursement request
@@ -78,7 +80,7 @@
 <br>
 
 - ~~A Manager can login~~
-- A Manager can view the Manager Homepage
+- ~~A Manager can view the Manager Homepage~~
 - ~~A Manager can logout~~
 - A Manager can approve/deny pending reimbursement requests
 - A Manager can view all pending requests from all employees

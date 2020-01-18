@@ -29,7 +29,7 @@ public class UserDAOImpl extends DataAccessObject implements UserDAO {
 	}
 
 	@Override
-	public Boolean authenticate(String username, String password) {
+	public Boolean authenticate(String username, String password) throws SQLException {
 		
 		String pw = "";
 		PreparedStatement stmt = MyStatements.sendQuery(Actions.GET_USER_PASS());
@@ -55,6 +55,36 @@ public class UserDAOImpl extends DataAccessObject implements UserDAO {
 	@Override
 	public void invalidate(User user) {
 		user.setIsLoggedIn(false);
+	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		User user = new User();
+		try {
+			PreparedStatement stmt = MyStatements.sendQuery(Actions.GET_USER_BY_USERNAME());
+			ResultSet rs = null;
+			
+			stmt.setString(1, username);
+			if (stmt.execute()) {
+				rs = stmt.getResultSet();
+				while (rs.next()) {
+					System.out.println("[UserDAOImpl] rs.getString(1) " + rs.getString(1));
+					System.out.println("[UserDAOImpl] rs.getString(2) " + rs.getString(2));
+					System.out.println("[UserDAOImpl] rs.getString(3) " + rs.getString(3));
+					System.out.println("[UserDAOImpl] rs.getString(4) " + rs.getString(4));
+					System.out.println("[UserDAOImpl] rs.getString(5) " + rs.getString(5));
+					user.setUserName(rs.getString(1));
+					user.setUserPass(rs.getString(2));
+					user.setUserRole(rs.getString(3));
+					user.setEmail(rs.getString(4));
+					user.setEmployeeId(rs.getString(5));
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }

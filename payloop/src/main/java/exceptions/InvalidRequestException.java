@@ -1,5 +1,5 @@
 package exceptions;
 
-public class InvalidRequestException extends Throwable {
+public class InvalidRequestException extends Exception {
 
 }
