@@ -20,6 +20,12 @@ public class User {
 		this.userRole = userRole;
 		this.email = email;
 	}
+	
+	public User(String email, String userName, String userRole) {
+		this.email = email;
+		this.userName = userName;
+		this.userRole = userRole;
+	}
 
 	public String getEmployeeId() {
 		return employeeId;

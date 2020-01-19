@@ -40,16 +40,16 @@
 
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
-| An Employee can login | done | `1/14 :: 18:14:12` | `1/17 :: 22:33:22` |
-| A Manager can login | done | `1/14 :: 18:14:12` | `1/17 :: 22:33:22` |
-| An Employee can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
-| A Manager can logout | done | `1/15 :: 00:18:02` | `1/17 :: 22:33:22` |
-| An Employee can view the Employee Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
-| A Manager can view the Manager Homepage | done | `1/18 :: 10:42:41` | `1/18 :: 15:43:09` |
-| An Employee can view their information | *in progress* | `1/18 :: 15:54:44` |  |
-| An Employee can view their pending reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
-| An Employee can view their resolved reimbursement requests | *in progress* | `1/18 :: 15:54:44` |  |
-| An Employee can submit a reimbursement request | *in progress* | `1/18 :: 15:54:44` |  |
+| An Employee can login | done | `1/14 18:14:12` | `1/17 22:33:22` |
+| A Manager can login | done | `1/14 18:14:12` | `1/17 22:33:22` |
+| An Employee can logout | done | `1/15 00:18:02` | `1/17 22:33:22` |
+| A Manager can logout | done | `1/15 00:18:02` | `1/17 22:33:22` |
+| An Employee can view the Employee Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
+| A Manager can view the Manager Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
+| An Employee can view their information | *in progress* | `1/18 15:54:44` | `1/18 23:57:03` |
+| An Employee can view their pending reimbursement requests | *in progress* | `1/18 15:54:44` |  |
+| An Employee can view their resolved reimbursement requests | *in progress* | `1/18 15:54:44` |  |
+| An Employee can submit a reimbursement request | *in progress* | `1/18 15:54:44` |  |
 |  |  |  |  |
 
 <br><br>
@@ -165,18 +165,18 @@
 - ##### Login
   * **Request method:** `POST`
   * **Request endpoint:** `v2/user/login`
-  * **Request body:** 
-  
+  * **Request body:**
+
     ```
-    { 
-      "username": "name", 
+    {
+      "username": "name",
       "password": "password"
     }
     ```
 
   * **Request Content-Type:** `application/json`
-  * **Response body:** 
-    
+  * **Response body:**
+
     ```
     {
       "path": "/logout",
@@ -191,8 +191,8 @@
 - ##### Logout
   * **Request method:** `GET`
   * **Request endpoint:** `v2/user/logout`
-  * **Response body:** 
-    
+  * **Response body:**
+
     ```
     {
       "path": "/login",

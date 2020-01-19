@@ -17,6 +17,11 @@ VALUES ('567890123456', 'Babs', 'Bunny', 'Orlando', 'Florida', '32789');
 INSERT INTO employees (employee_id, firstName, lastName, city, state, zipcode)
 VALUES ('789012345678', 'Mickey', 'Mouse', 'Tysons Corner', 'Virginia', '22043');
 
+-- GET EMPLOYEE BY ID
+SELECT employee_id, firstName, lastName, city, state, zipcode
+FROM employees
+WHERE employee_id = '123456789012';
+
 -- EMPLOYEE INFORMATION JOIN
 SELECT emp.employee_id, emp.firstName, emp.lastName, emp.city, emp.state, emp.zipcode, ers.email, ers.username, ers.userrole
 FROM employees emp
@@ -37,6 +42,8 @@ CREATE TABLE ers_users (
 );
 
 SELECT * FROM ers_users;
+
+SELECT email, username, userrole FROM ers_users WHERE employee_id = '789012345678';
 
 INSERT INTO ers_users (employee_id, username, userpass, userrole, email)
 VALUES ('123456789012', 'ronaldmcdonald', 'hispassword', 'employee', 'ronald.mcdonald@fake.email');

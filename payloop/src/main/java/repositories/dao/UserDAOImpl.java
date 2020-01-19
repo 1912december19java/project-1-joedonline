@@ -68,11 +68,6 @@ public class UserDAOImpl extends DataAccessObject implements UserDAO {
 			if (stmt.execute()) {
 				rs = stmt.getResultSet();
 				while (rs.next()) {
-					System.out.println("[UserDAOImpl] rs.getString(1) " + rs.getString(1));
-					System.out.println("[UserDAOImpl] rs.getString(2) " + rs.getString(2));
-					System.out.println("[UserDAOImpl] rs.getString(3) " + rs.getString(3));
-					System.out.println("[UserDAOImpl] rs.getString(4) " + rs.getString(4));
-					System.out.println("[UserDAOImpl] rs.getString(5) " + rs.getString(5));
 					user.setUserName(rs.getString(1));
 					user.setUserPass(rs.getString(2));
 					user.setUserRole(rs.getString(3));
