@@ -34,6 +34,7 @@
 - ##### `servlets/`
   * | `EmployeeServlet.java`
   * | `UserServlet.java`
+  * | `UserServlet.java`
 
 <br>
 
@@ -156,20 +157,41 @@
 
 <br>
 
-- ##### Employee Reimbursements ViewAll
-  * **Request method:** `GET`
-  * **Request endpoint:** `v2/reimbursements/all`
-  * **Response body:**
+- ##### Employee Reimbursements: `getAllPendingRequests`
+  * **Request method:** `POST`
+  * **Request endpoint:** `v2/reimbursements/pending-requests`
+  * **Request body:**
 
     ```
     {
-      "reimbursement_id": <reimbursement_id>,
-      "reimbursement_amount": <reimbursement_amount>,
-      "reimbursement_status": <"pending" or "resolved">,
-      "reimbursement_date_submitted": Date -> string,
-      "reimbursement_date_approved": Date -> string,
-      "employee_id": <employee_id>
+      "employeeId": "999999999999"
     }
+    ```
+
+  * **Request Content-Type:** `application/json`
+  * **Response body:**
+
+    ```
+    [
+      {
+        "id": <reimbursement_id>,
+        "amount": <reimbursement_amount>,
+        "status": <"pending" or "resolved">,
+        "dateSubmitted": Date -> string,
+        "dateApproved": Date -> string,
+        "employeeId": <employee_id>
+      },
+      {
+        "id": <reimbursement_id>,
+        "amount": <reimbursement_amount>,
+        "status": <"pending" or "resolved">,
+        "dateSubmitted": Date -> string,
+        "dateApproved": Date -> string,
+        "employeeId": <employee_id>
+      },
+      {...},
+      {...}
+    ]
     ```
 
 <br>

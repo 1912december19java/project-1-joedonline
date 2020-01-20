@@ -34,14 +34,6 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 			}
 			System.out.println("[ReimbursementDAOImpl] getAllPendingRequests() -> rs: " + rs);
 			while (rs.next()) {
-				System.out.println();
-				System.out.println("[ReimbursementDAOImpl] id: " + rs.getString(1));
-				System.out.println("[ReimbursementDAOImpl] amount: " + rs.getString(2));
-				System.out.println("[ReimbursementDAOImpl] status: " + rs.getString(3));
-				System.out.println("[ReimbursementDAOImpl] dateSubmitted: " + rs.getString(4));
-				System.out.println("[ReimbursementDAOImpl] dateApproved: " + rs.getString(5));
-				System.out.println("[ReimbursementDAOImpl] employeeId: " + rs.getString(6));
-				System.out.println();
 				reimbursement.setId(rs.getString(1));
 				reimbursement.setAmount(rs.getDouble(2));
 				reimbursement.setStatus(rs.getString(3));

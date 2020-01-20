@@ -71,7 +71,7 @@ public class UserServlet extends HttpServlet {
 		switch (endpoints[4]) {
 		case "login":
 			
-			JsonNode rootNode = objMapper.readTree(bodyString);			
+			JsonNode rootNode = objMapper.readTree(bodyString);	
 			List<String> creds = new ArrayList<String>(); 
 			
 			rootNode.forEach((s) -> {
