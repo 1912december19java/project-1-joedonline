@@ -25,11 +25,19 @@
 		<description></description>
 		<servlet-class>servlets.UserServlet</servlet-class>
 	</servlet>
+	
 	<servlet>
 		<servlet-name>EmployeeServlet</servlet-name>
 		<display-name>EmployeeServlet</display-name>
 		<description></description>
 		<servlet-class>servlets.EmployeeServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ReimbursementServlet</servlet-name>
+		<display-name>ReimbursementServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.ReimbursementServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -40,5 +48,10 @@
 	<servlet-mapping>
 		<servlet-name>EmployeeServlet</servlet-name>
 		<url-pattern>/v2/employee/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ReimbursementServlet</servlet-name>
+		<url-pattern>/v2/reimbursements/*</url-pattern>
 	</servlet-mapping>
 </web-app>

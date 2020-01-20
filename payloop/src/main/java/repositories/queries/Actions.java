@@ -7,7 +7,7 @@ public final class Actions {
 	}
 
 	/*
-	 * AUTH
+	 * USERS
 	 */
 //	public static String GET_USER_PASS(String username) {
 	public static String GET_USER_PASS() {
@@ -19,6 +19,9 @@ public final class Actions {
 		return "SELECT * FROM ers_users WHERE username = ?";
 	}
 
+	/*
+	 * EMPLOYEES
+	 */
 	public static String GET_EMPLOYEE_BY_ID(String employeeId) {
 		String select = "SELECT employee_id, firstName, lastName, city, state, zipcode ";
 		String from = "FROM employees ";
@@ -28,6 +31,13 @@ public final class Actions {
 
 	public static String GET_EMAIL_USERNAME_USERROLE() {
 		return "SELECT email, username, userrole FROM ers_users WHERE employee_id = ?";
+	}
+	
+	/*
+	 * REIMBURSEMENTS
+	 */
+	public static String GET_ALL_PENDING_REQUESTS() {
+		return "SELECT * FROM reimbursements WHERE employee_id = ? AND reimbursement_status = ?";
 	}
 
 }

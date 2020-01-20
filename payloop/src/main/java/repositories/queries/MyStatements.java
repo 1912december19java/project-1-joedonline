@@ -11,13 +11,11 @@ public final class MyStatements {
 		
 		System.out.println("[MyStatements] statement " + statement);
 		PreparedStatement stmt = ConnectionManager.getConnection().prepareStatement(statement);
-//		System.out.println("[MyStatements] stmt " + stmt);
 		
 		try {
 			stmt = ConnectionManager.getConnection().prepareStatement(statement);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// CUSTOM EXCEPTION WILL GO HERE
 		}
 		
 		return stmt;

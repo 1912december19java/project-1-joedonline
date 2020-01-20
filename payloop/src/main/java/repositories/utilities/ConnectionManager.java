@@ -29,7 +29,7 @@ public class ConnectionManager {
 		try {
 			connection = DriverManager.getConnection(endpoint, username, password);
 		} catch (SQLException e) {
-
+			System.out.println("[ConnectionManager] static {...} ERROR: " + e);
 		}
 
 	}
@@ -37,6 +37,14 @@ public class ConnectionManager {
 	public static Connection getConnection() {
 		System.out.println("[ConnectionManager] connection " + connection);
 		return connection;
+	}
+	
+	public static void close() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			System.out.println("[ConnectionManager] void close() ERROR: " + e);
+		}
 	}
 
 }

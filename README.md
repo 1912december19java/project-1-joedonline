@@ -10,8 +10,15 @@
 ##### *`src/main/java`*
 - ##### `exceptions/`
 - ##### `models/`
+  * | `Employee.java`
+  * | `EmployeeUserInfo.java`
+  * | `Reimbursement.java`
   * | `User.java`
 - ##### `repositories/dao/`
+  * | `EmployeeDAO.java`
+  * | `EmployeeDAOImpl.java`
+  * | `ReimbursementDAO.java`
+  * | `ReimbursementDAOImpl.java`
   * | `UserDAO.java`
   * | `UserDAOImpl.java`
 - ##### `repositories/queries/`
@@ -21,8 +28,12 @@
   * | `ConnectionManager.java`
   * | `DataAccessObject.java`
 - ##### `services/`
+  * | `EmployeeService.java`
+  * | `ReimbursementService.java`
   * | `UserService.java`
 - ##### `servlets/`
+  * | `EmployeeServlet.java`
+  * | `UserServlet.java`
 
 <br>
 
@@ -47,7 +58,7 @@
 | An Employee can view the Employee Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
 | A Manager can view the Manager Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
 | An Employee can view their information | *in progress* | `1/18 15:54:44` | `1/18 23:57:03` |
-| An Employee can view their pending reimbursement requests | *in progress* | `1/18 15:54:44` |  |
+| An Employee can view their pending reimbursement requests | done | `1/18 15:54:44` | `1/19 21:14:50` |
 | An Employee can view their resolved reimbursement requests | *in progress* | `1/18 15:54:44` |  |
 | An Employee can submit a reimbursement request | *in progress* | `1/18 15:54:44` |  |
 |  |  |  |  |
@@ -155,8 +166,9 @@
       "reimbursement_id": <reimbursement_id>,
       "reimbursement_amount": <reimbursement_amount>,
       "reimbursement_status": <"pending" or "resolved">,
-      "reimbursement_date_submitted": Date,
-      "reimbursement_date_approved": Date
+      "reimbursement_date_submitted": Date -> string,
+      "reimbursement_date_approved": Date -> string,
+      "employee_id": <employee_id>
     }
     ```
 

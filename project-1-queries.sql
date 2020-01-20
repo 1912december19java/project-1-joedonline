@@ -59,3 +59,71 @@ SELECT userpass FROM ers_users WHERE username = 'ronaldmcdonald';
 SELECT * FROM ers_users WHERE username = 'mickeymouse';
 
 DROP TABLE ers_users;
+
+
+--------------------------------------------------------------------------------
+CREATE TABLE reimbursements (
+	reimbursement_id VARCHAR(8) NOT NULL UNIQUE,
+	reimbursement_amount NUMERIC (9, 2) NOT NULL,
+	reimbursement_status VARCHAR (8) NOT NULL,
+	reimbursement_date_submitted VARCHAR(10) NOT NULL,
+	reimbursement_date_approved VARCHAR(10) NOT NULL,
+	employee_id VARCHAR (12) NOT NULL
+);
+
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id)
+VALUES ('R1000100', 353.92, 'pending', '01/03/2020', 'tbd', '789012345678'); -- mickeymouse
+
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id)
+VALUES ('R1000110', 190.73, 'pending', '01/08/2020', 'tbd', '789012345678'); -- mickeymouse
+
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id)
+VALUES ('R1000103', 1002.91, 'pending', '01/15/2020', 'tbd', '789012345678'); -- mickeymouse
+
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id)
+VALUES ('R1000333', 250.00, 'resolved', '01/16/2020', '01/20/2020', '789012345678'); -- mickeymouse
+
+
+SELECT * FROM reimbursements;
+
+DROP TABLE reimbursements;
+
+
+
+
+
+
+
+--------------------------
+
+java.lang.NullPointerException
+	at repositories.dao.ReimbursementDAOImpl.getAllPendingRequests(ReimbursementDAOImpl.java:51)
+	at services.ReimbursementService.getAllPendingRequests(ReimbursementService.java:17)
+	at tests.TestEmployeeHomepage.testEmployeeCanViewPendingReimbursementRequests(TestEmployeeHomepage.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)

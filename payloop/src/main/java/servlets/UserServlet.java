@@ -64,14 +64,14 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String qs = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+		String bodyString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		String[] endpoints = request.getRequestURI().split("/");
 		
 		UserService userService;
 		switch (endpoints[4]) {
 		case "login":
 			
-			JsonNode rootNode = objMapper.readTree(qs);			
+			JsonNode rootNode = objMapper.readTree(bodyString);			
 			List<String> creds = new ArrayList<String>(); 
 			
 			rootNode.forEach((s) -> {
@@ -109,12 +109,10 @@ public class UserServlet extends HttpServlet {
 				}
 				
 			} catch (SQLException | InvalidUsernameOrPasswordException e1) {
-				e1.printStackTrace();
+				System.out.println("[UserServlet] ERROR: InvalidUsernameOrPasswordException: " + e1);
 			}
 			
 			response.getWriter().write("{ \"path\": \"/logout\", \"homepage\": \"" + homepageURL + "\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
-			
-			System.out.println("[UserServlet] POST qs " + qs);
 			break;
 		default:
 			try {

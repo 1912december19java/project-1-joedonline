@@ -11,8 +11,8 @@ public class EmployeeService {
 
 	private EmployeeDAOImpl employeeDaoImpl;
 
-	public EmployeeService(EmployeeDAOImpl userDao) {
-		this.employeeDaoImpl = userDao;
+	public EmployeeService(EmployeeDAOImpl employeeDao) {
+		this.employeeDaoImpl = employeeDao;
 	}
 
 	public void addNew(Properties props) {
