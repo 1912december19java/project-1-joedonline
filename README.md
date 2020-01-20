@@ -93,6 +93,8 @@
 
 - ##### TestCases: Employee
   * `testEmployeeCanViewOnlyTheirInformationOnEmployeePageAccordingToEmployeeIdURL()`
+  * `testEmployeeCanViewPendingReimbursementRequests()`
+  * `testEmployeeCanViewResolvedReimbursementRequests()`
 
 <br><br>
 

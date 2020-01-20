@@ -86,8 +86,12 @@ public class TestEmployeeHomepage {
 			assertTrue("No pending requests for employeeId: " + employee.getEmployee_id(), allPendingRequests != null);
 		} catch (NullPointerException e) {
 			System.out.println("[TestEmployeeHomepage] testEmployeeCanViewPendingReimbursementRequests() ERROR: " + e);
-		}
-		
+		}	
+	}
+	
+	@Test
+	public void testEmployeeCanViewResolvedReimbursementRequests() {
+		fail("FIRST FAIL / fail first");
 	}
 
 }
