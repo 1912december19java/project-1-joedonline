@@ -103,5 +103,10 @@ public class TestEmployeeHomepage {
 		}
 		
 	}
+	
+	@Test
+	public void testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest() {
+		fail("FAIL FIRST / first fail");
+	}
 
 }

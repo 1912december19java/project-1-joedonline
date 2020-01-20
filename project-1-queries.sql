@@ -93,6 +93,8 @@ VALUES ('R1004100', 333.33, 'resolved', '01/12/2020', '01/12/2020', '56789012345
 INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id)
 VALUES ('R1005507', 1521.21, 'resolved', '12/14/2019', '01/17/2020', '123456789012'); -- ronaldmcdonald
 
+DELETE FROM reimbursements WHERE reimbursement_id = 'R1005507';
+
 
 -- all pending requests
 SELECT * FROM reimbursements WHERE employee_id = '789012345678' AND reimbursement_status = 'pending';

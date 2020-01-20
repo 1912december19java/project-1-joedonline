@@ -95,6 +95,7 @@
   * `testEmployeeCanViewOnlyTheirInformationOnEmployeePageAccordingToEmployeeIdURL()`
   * `testEmployeeCanViewPendingReimbursementRequests()`
   * `testEmployeeCanViewResolvedReimbursementRequests()`
+  * `testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest()`
 
 <br><br>
 
