@@ -7,5 +7,6 @@ import models.Reimbursement;
 public interface ReimbursementDAO {
 
 	ArrayList<Reimbursement> getAllPendingRequests(String employeeId);
+	ArrayList<Reimbursement> getAllResolvedRequests(String employeeId);
 	
 }

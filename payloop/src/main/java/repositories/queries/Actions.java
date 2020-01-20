@@ -9,10 +9,12 @@ public final class Actions {
 	/*
 	 * USERS
 	 */
-//	public static String GET_USER_PASS(String username) {
 	public static String GET_USER_PASS() {
-//		return "SELECT userpass FROM ers_users WHERE username = '" + username + "'";
 		return "SELECT userpass FROM ers_users WHERE username = ?";
+	}
+	
+	public static String GET_USER_PASS(String username) {
+		return "SELECT userpass FROM ers_users WHERE username = '" + username + "'";
 	}
 
 	public static String GET_USER_BY_USERNAME() {
@@ -32,11 +34,11 @@ public final class Actions {
 	public static String GET_EMAIL_USERNAME_USERROLE() {
 		return "SELECT email, username, userrole FROM ers_users WHERE employee_id = ?";
 	}
-	
+
 	/*
 	 * REIMBURSEMENTS
 	 */
-	public static String GET_ALL_PENDING_REQUESTS() {
+	public static String GET_ALL_BY_REIMBURSEMENT_STATUS() {
 		return "SELECT * FROM reimbursements WHERE employee_id = ? AND reimbursement_status = ?";
 	}
 

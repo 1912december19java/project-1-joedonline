@@ -58,9 +58,9 @@
 | A Manager can logout | done | `1/15 00:18:02` | `1/17 22:33:22` |
 | An Employee can view the Employee Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
 | A Manager can view the Manager Homepage | done | `1/18 10:42:41` | `1/18 15:43:09` |
-| An Employee can view their information | *in progress* | `1/18 15:54:44` | `1/18 23:57:03` |
+| An Employee can view their information | done | `1/18 15:54:44` | `1/18 23:57:03` |
 | An Employee can view their pending reimbursement requests | done | `1/18 15:54:44` | `1/19 21:14:50` |
-| An Employee can view their resolved reimbursement requests | *in progress* | `1/18 15:54:44` |  |
+| An Employee can view their resolved reimbursement requests | done | `1/18 15:54:44` | `1/20 04:44:21` |
 | An Employee can submit a reimbursement request | *in progress* | `1/18 15:54:44` |  |
 |  |  |  |  |
 
@@ -159,9 +159,9 @@
 
 <br>
 
-- ##### Employee Reimbursements: `getAllPendingRequests`
+- ##### Employee Reimbursements: `getAllPendingRequests` | `getAllResolvedRequests`
   * **Request method:** `POST`
-  * **Request endpoint:** `v2/reimbursements/pending-requests`
+  * **Request endpoint:** `v2/reimbursements/pending` | `v2/reimbursements/resolved`
   * **Request body:**
 
     ```

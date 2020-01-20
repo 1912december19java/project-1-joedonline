@@ -18,4 +18,8 @@ public class ReimbursementService {
 		return this.reimbursementDAOImpl.getAllPendingRequests(employeeId);
 	}
 
+	public ArrayList<Reimbursement> getAllResolvedRequests(String employeeId) {
+		return this.reimbursementDAOImpl.getAllResolvedRequests(employeeId);
+	}
+
 }

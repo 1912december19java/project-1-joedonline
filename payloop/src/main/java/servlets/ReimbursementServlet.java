@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import exceptions.InvalidRequestException;
 import models.Reimbursement;
 import repositories.dao.ReimbursementDAOImpl;
 import services.ReimbursementService;
@@ -61,18 +62,31 @@ public class ReimbursementServlet extends HttpServlet {
 
 		String[] requestURLArr = request.getRequestURI().split("/");
 		String path = requestURLArr[4];
+		System.out.println("[ReimbursementServlet] path: " + path);
 		
 		ReimbursementService reimbursementService = new ReimbursementService(new ReimbursementDAOImpl());
-		ArrayList<Reimbursement> allPendingRequests;
+		ArrayList<Reimbursement> allRequests = null;
 		
 		reimbursement = new Reimbursement();
 
 		try {
-			allPendingRequests = reimbursementService.getAllPendingRequests(employeeId);
-			System.out.println("[ReimbursementServlet] allPendingRequests");			
-			response.getWriter().write(objMapper.writeValueAsString(allPendingRequests).toString());
+			switch (path) {
+			case "pending" :
+				allRequests = reimbursementService.getAllPendingRequests(employeeId);
+				System.out.println("[ReimbursementServlet] allPendingRequests");			
+				break;
+			case "resolved" :
+				allRequests = reimbursementService.getAllResolvedRequests(employeeId);
+				System.out.println("[ReimbursementServlet] allResolvedRequests");
+				break;
+			default:
+				throw new InvalidRequestException();
+			}
+			
+			response.getWriter().write(objMapper.writeValueAsString(allRequests).toString());
 		} catch (NullPointerException e) {
-			System.out.println("[TestEmployeeHomepage] testEmployeeCanViewPendingReimbursementRequests() ERROR: " + e);
+			response.getWriter().write("{\"message\": \"Something went wrong during fetch.\"}");
+		} catch (InvalidRequestException e) {
 			response.getWriter().write("{\"message\": \"Something went wrong during fetch.\"}");
 		}
 

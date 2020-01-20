@@ -16,9 +16,9 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 	PreparedStatement stmt;
 	ResultSet rs = null;
 	Reimbursement reimbursement;
-	
+
 	public ReimbursementDAOImpl() {
-		
+
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 		ArrayList<Reimbursement> allPendingRequests = new ArrayList<Reimbursement>();
 		reimbursement = new Reimbursement();
 		try {
-			stmt = MyStatements.sendQuery(Actions.GET_ALL_PENDING_REQUESTS());
+			stmt = MyStatements.sendQuery(Actions.GET_ALL_BY_REIMBURSEMENT_STATUS());
 			stmt.setString(1, employeeId);
 			stmt.setString(2, "pending");
 			if (stmt.execute()) {
@@ -42,7 +42,8 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 				reimbursement.setEmployeeId(rs.getString(6));
 				allPendingRequests.add(reimbursement);
 			}
-			System.out.println("[ReimbursementDAOImpl] getAllPendingRequests() allPendingRequests: " + allPendingRequests);
+			System.out.println(
+					"[ReimbursementDAOImpl] getAllPendingRequests() allPendingRequests: " + allPendingRequests);
 			return allPendingRequests;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,21 +52,51 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 	}
 
 	@Override
+	public ArrayList<Reimbursement> getAllResolvedRequests(String employeeId) {
+		ArrayList<Reimbursement> allResolvedRequests = new ArrayList<Reimbursement>();
+		reimbursement = new Reimbursement();
+		try {
+			stmt = MyStatements.sendQuery(Actions.GET_ALL_BY_REIMBURSEMENT_STATUS());
+			stmt.setString(1, employeeId);
+			stmt.setString(2, "resolved");
+			if (stmt.execute()) {
+				rs = stmt.getResultSet();
+			}
+			System.out.println("[ReimbursementDAOImpl] getAllResolvedRequests() -> rs: " + rs);
+			while (rs.next()) {
+				reimbursement.setId(rs.getString(1));
+				reimbursement.setAmount(rs.getDouble(2));
+				reimbursement.setStatus(rs.getString(3));
+				reimbursement.setDateSubmitted(rs.getString(4));
+				reimbursement.setDateApproved(rs.getString(5));
+				reimbursement.setEmployeeId(rs.getString(6));
+				allResolvedRequests.add(reimbursement);
+			}
+			System.out.println(
+					"[ReimbursementDAOImpl] getAllResolvedRequests() allResolvedRequests: " + allResolvedRequests);
+			return allResolvedRequests;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return allResolvedRequests;
+	}
+
+	@Override
 	public void addNew(Properties props) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
