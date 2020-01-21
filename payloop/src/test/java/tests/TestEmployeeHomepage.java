@@ -28,6 +28,7 @@ import services.ReimbursementService;
 public class TestEmployeeHomepage {
 
 	Connection connection;
+	Properties props;
 //	Employee employee = new Employee("123456789012", "Ronald", "McDonald", "Sacramento", "California", "94203");
 //	Employee employee = new Employee("567890123456", "Babs", "Bunny", "Orlando", "Florida", "32789");
 	Employee employee = new Employee("789012345678", "Mickey", "Mouse", "Tysons Corner", "Virginia", "22043");
@@ -113,7 +114,7 @@ public class TestEmployeeHomepage {
 	public void testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest() {
 		Boolean boolIsSubmitted = false;
 		ObjectMapper objMapper = new ObjectMapper();
-		Properties props = new Properties();
+		props = new Properties();
 		props.setProperty("employeeId", "789012345678");
 		props.setProperty("todaysDate", "01/20/2020");
 		props.setProperty("amount", "232.71");
@@ -132,6 +133,71 @@ public class TestEmployeeHomepage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testEmployeeInformationReceivedAreNotEmptyAndNotWhiteSpaces() {
+		
+		Boolean isCompleteAndNotWhiteSpaces = false; // Unit testing var only
+		
+		/* Servlet interactions... */
+		ObjectMapper objMapper = new ObjectMapper();
+		// some servlet implementation here...
+		
+		/* Process information */
+		props = new Properties();
+		props.setProperty("employeeId", "567890123456"); // tbl: employees
+		props.setProperty("firstName", "Babs"); // tbl: employees
+		props.setProperty("lastName", "Bunny"); // tbl: employees
+		props.setProperty("city", "Orlando"); // tbl: employees
+		props.setProperty("state", "Florida"); // tbl: employees
+		props.setProperty("zipcode", "32789"); // tbl: employees
+		props.setProperty("username", "babsbunny"); // tbl: ers_users
+		props.setProperty("userpass", "herpassword"); // tbl: ers_users
+		props.setProperty("userrole", "employee"); // tbl: ers_users
+		props.setProperty("email", "babs.bunny@fake.email"); // tbl: ers_users
+		
+		/* Check information */
+		// check for null or empty values
+		String employeeId = props.get("employeeId").toString();
+		String firstName = props.get("firstName").toString();
+		String lastName = props.get("lastName").toString();
+		String city = props.get("city").toString();
+		String state = props.get("state").toString();
+		String zipcode = props.get("zipcode").toString();
+		String username = props.get("username").toString();
+		String userpass = props.getProperty("userpass").toString();
+		String userrole = props.get("userrole").toString();
+		String email = props.get("email").toString();
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() employeeId: " + employeeId);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() firstName: " + firstName);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() lastName: " + lastName);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() city: " + city);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() state: " + state);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() zipcode: " + zipcode);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() username: " + username);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() userpass: " + userpass);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() userrole: " + userrole);
+		System.out.println("[TestEmployeeHomepage] testEmployeeInformationReceivedAreCompleteAndAreProperTypes() email: " + email);
+		
+		System.out.println("[TestemployeeHomepage] isCompleteAndNotWhiteSpaces: -> before if: " + isCompleteAndNotWhiteSpaces);
+		if (!employeeId.trim().isEmpty() & 
+			!firstName.trim().isEmpty() & 
+			!lastName.trim().isEmpty() & 
+			!city.trim().isEmpty() & 
+			!state.trim().isEmpty() & 
+			!zipcode.trim().isEmpty() & 
+			!username.trim().isEmpty() &
+			!userpass.trim().isEmpty() &
+			!userrole.trim().isEmpty() & 
+			!email.trim().isEmpty()) {
+			
+			isCompleteAndNotWhiteSpaces = employeeService.update(props);
+			System.out.println("[TestemployeeHomepage] isCompleteAndNotWhiteSpaces -> at end if: " + isCompleteAndNotWhiteSpaces);
+		}
+		
+		assertTrue("Employee information submitted are not empty or not white spaces only", isCompleteAndNotWhiteSpaces);
+		
 	}
 
 }

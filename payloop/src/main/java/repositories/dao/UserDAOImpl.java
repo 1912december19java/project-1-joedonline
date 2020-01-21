@@ -14,18 +14,21 @@ import repositories.utilities.DataAccessObject;
 public class UserDAOImpl extends DataAccessObject implements UserDAO {
 
 	@Override
-	public void addNew(Properties props) {
-
+	public Boolean addNew(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override
-	public void update() {
-
+	public Boolean update(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override
-	public void delete() {
-
+	public Boolean delete(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override

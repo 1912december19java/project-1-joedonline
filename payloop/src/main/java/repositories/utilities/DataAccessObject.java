@@ -6,8 +6,8 @@ import models.User;
 
 public abstract class DataAccessObject {
 	
-	public abstract void addNew(Properties props);
-	public abstract void update();
-	public abstract void delete();
+	public abstract Boolean addNew(Properties props);
+	public abstract Boolean update(Properties props);
+	public abstract Boolean delete(Properties props);
 		
 }

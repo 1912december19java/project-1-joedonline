@@ -1,5 +1,5 @@
 CREATE TABLE employees (
-	employee_id VARCHAR (12) NOT NULL UNIQUE,
+	employee_id VARCHAR (64) NOT NULL UNIQUE,
 	firstName VARCHAR (64) NOT NULL,
 	lastName VARCHAR (64) NOT NULL,
 	city VARCHAR (64) NOT NULL,
@@ -16,6 +16,15 @@ VALUES ('567890123456', 'Babs', 'Bunny', 'Orlando', 'Florida', '32789');
 
 INSERT INTO employees (employee_id, firstName, lastName, city, state, zipcode)
 VALUES ('789012345678', 'Mickey', 'Mouse', 'Tysons Corner', 'Virginia', '22043');
+
+UPDATE employees
+SET firstName = 'Babs', lastName = 'Bunny', city = 'Cincinnati', state = 'Ohio', zipcode = '41073'
+WHERE employee_id = '567890123456';
+
+SELECT * FROM employees;
+
+DROP TABLE employees;
+
 
 -- GET EMPLOYEE BY ID
 SELECT employee_id, firstName, lastName, city, state, zipcode
@@ -34,11 +43,11 @@ DROP TABLE employees;
 
 --------------------------------------------------------------------------------
 CREATE TABLE ers_users (
-	username VARCHAR (32) NOT NULL UNIQUE,
+	username VARCHAR (64) NOT NULL UNIQUE,
 	userpass VARCHAR (64) NOT NULL,
-	userrole VARCHAR (32) NOT NULL,
-	email VARCHAR (128) UNIQUE,
-	employee_id VARCHAR (12) NOT NULL
+	userrole VARCHAR (64) NOT NULL,
+	email VARCHAR (256) UNIQUE,
+	employee_id VARCHAR (64) NOT NULL
 );
 
 SELECT * FROM ers_users;
@@ -57,6 +66,8 @@ VALUES ('789012345678', 'mickeymouse', 'anotherpassword123', 'manager', 'mickey@
 SELECT userpass FROM ers_users WHERE username = 'ronaldmcdonald';
 
 SELECT * FROM ers_users WHERE username = 'mickeymouse';
+
+SELECT * FROM ers_users;
 
 DROP TABLE ers_users;
 

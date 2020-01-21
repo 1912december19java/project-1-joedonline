@@ -16,6 +16,7 @@ public class EmployeeDAOImpl extends DataAccessObject implements EmployeeDAO {
 	
 	PreparedStatement stmt;
 	ResultSet rs = null;
+	Employee employee;
 	User user;
 
 	public EmployeeDAOImpl() {
@@ -23,38 +24,68 @@ public class EmployeeDAOImpl extends DataAccessObject implements EmployeeDAO {
 	}
 
 	@Override
-	public void addNew(Properties props) {
-		// TODO Auto-generated method stub
-
+	public Boolean addNew(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
+	public Boolean update(Properties props) {
+		
+		Boolean updateIsSuccessful = false;
+		String employeeId = props.getProperty("employeeId");
+		employee = this.getEmployeeById(employeeId);
+		
+		try {			
+			String[] updateQueries = Actions.UPDATE_EMPLOYEE_AND_USER_RECORD();
+			stmt = MyStatements.sendQuery(updateQueries[0]);
+			stmt.setString(1, props.getProperty("firstName"));
+			stmt.setString(2, props.getProperty("lastName"));
+			stmt.setString(3, props.getProperty("city"));
+			stmt.setString(4, props.getProperty("state"));
+			stmt.setString(5, props.getProperty("zipcode"));
+			stmt.setString(6, employeeId); // set above, logically separate because it goes in the WHERE clause
+			Boolean employeeUpdateIsSuccessful = stmt.execute();
+			
+			stmt = MyStatements.sendQuery(updateQueries[1]);
+			stmt.setString(1, props.getProperty("username"));
+			stmt.setString(2, props.getProperty("userpass"));
+			stmt.setString(3, props.getProperty("userrole"));
+			stmt.setString(4, props.getProperty("email"));
+			stmt.setString(5, employeeId);
+			
+			Boolean userUpdateIsSuccessful = stmt.execute();
+			if (!employeeUpdateIsSuccessful && !userUpdateIsSuccessful) {
+				updateIsSuccessful = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return updateIsSuccessful;
 	}
 
 	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-
+	public Boolean delete(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
-	@SuppressWarnings("null")
 	@Override
-	public Employee getEmployeeById(String employeeId) {
-		System.out.println("[EmployeeDAOImpl] getEmployeeById() employeeId param: " + employeeId);
+	public Employee getEmployeeById(String str) {
+		System.out.println("[EmployeeDAOImpl] getEmployeeById() str: " + str);
 		Employee emp = new Employee();
-		System.out.println("[EmployeeDAOImpl] getEmployeeId() reached " + employeeId);
+		System.out.println("[EmployeeDAOImpl] getEmployeeId() str: " + str);
 		try {
-			stmt = MyStatements.sendQuery(Actions.GET_EMPLOYEE_BY_ID(employeeId));
-			stmt.setString(1, employeeId);
+			stmt = MyStatements.sendQuery(Actions.GET_EMPLOYEE_BY_ID());
+			stmt.setString(1, str);
 			if (stmt.execute()) {
 				rs = stmt.getResultSet();
 			}
 			System.out.println("[EmployeeDAOImpl] getEmployeeById(...) emp before while: " + emp);
 			while (rs.next()) {
-				emp.setEmployee_id(employeeId);
+				emp.setEmployee_id(str);
 				emp.setFirstName(rs.getString(2));
 				emp.setLastName(rs.getString(3));
 				emp.setCity(rs.getString(4));

@@ -108,21 +108,21 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 	}
 
 	@Override
-	public void addNew(Properties props) {
-		// TODO Auto-generated method stub
-
+	public Boolean addNew(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
+	public Boolean update(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-
+	public Boolean delete(Properties props) {
+		// REMEMBER TO RETURN TRUE OR FALSE AFTER IMPLEMENTATION!
+		return null;
 	}
 
 }

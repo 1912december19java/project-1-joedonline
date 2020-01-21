@@ -26,5 +26,20 @@ public class ReimbursementService {
 	public String saveReimbursementRequest(Properties props) {
 		return this.reimbursementDAOImpl.saveReimbursementRequest(props);
 	}
+	
+	public void addNew(Properties props) {
+		System.out.println("[EmployeeService] addNew(Properties props): " + props.elements().toString());
+		this.reimbursementDAOImpl.update(props);
+	}
+
+	public void update(Properties props) {
+		System.out.println("[EmployeeService] update(Properties props): " + props.elements().toString());
+		this.reimbursementDAOImpl.update(props);
+	}
+
+	public void delete(Properties props) {
+		System.out.println("[EmployeeService] delete(Properties props): " + props.elements().toString());
+		this.reimbursementDAOImpl.delete(props);
+	}
 
 }

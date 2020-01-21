@@ -109,6 +109,7 @@
   * `testEmployeeCanViewPendingReimbursementRequests()`
   * `testEmployeeCanViewResolvedReimbursementRequests()`
   * `testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest()`
+  * `testEmployeeInformationReceivedAreNotEmptyAndNotWhiteSpaces()`
 
 <br><br>
 

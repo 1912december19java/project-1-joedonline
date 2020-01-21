@@ -15,19 +15,22 @@ public class EmployeeService {
 		this.employeeDaoImpl = employeeDao;
 	}
 
-	public void addNew(Properties props) {
-
+	public Boolean addNew(Properties props) {
+		System.out.println("[EmployeeService] addNew(Properties props): " + props.elements().toString());
+		return this.employeeDaoImpl.update(props);
 	}
 
-	public void update() {
-
+	public Boolean update(Properties props) {
+		System.out.println("[EmployeeService] update(Properties props): " + props.elements().toString());
+		return this.employeeDaoImpl.update(props);
 	}
 
-	public void delete() {
-
+	public Boolean delete(Properties props) {
+		System.out.println("[EmployeeService] delete(Properties props): " + props.elements().toString());
+		return this.employeeDaoImpl.delete(props);
 	}
 
-	public Employee getEmployeeById(String employeeId) {
+	public Employee getEmployeeByIdxx(String employeeId) {
 		System.out.println("[EmployeeService] getEmployeeById(String employeeId): " + employeeId);
 		return this.employeeDaoImpl.getEmployeeById(employeeId);
 	}
