@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletConfig;
@@ -42,8 +43,7 @@ public class ReimbursementServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("[ReimbursementServlet] doGet() reached");
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().write("{ \"message\": \"GET request reached; from ReimbursementServlet.\" }");
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class ReimbursementServlet extends HttpServlet {
 		
 		JsonNode rootNode = objMapper.readTree(bodyString);
 		
-		String employeeId = rootNode.get("employeeId").asText();
+		String employeeId = "";
 
 		String[] requestURLArr = request.getRequestURI().split("/");
 		String path = requestURLArr[4];
@@ -72,24 +72,36 @@ public class ReimbursementServlet extends HttpServlet {
 		try {
 			switch (path) {
 			case "pending" :
+				employeeId = rootNode.get("employeeId").asText();
 				allRequests = reimbursementService.getAllPendingRequests(employeeId);
-				System.out.println("[ReimbursementServlet] allPendingRequests");			
+				System.out.println("[ReimbursementServlet] allPendingRequests");
+				response.getWriter().write(objMapper.writeValueAsString(allRequests).toString());
 				break;
 			case "resolved" :
+				employeeId = rootNode.get("employeeId").asText();
 				allRequests = reimbursementService.getAllResolvedRequests(employeeId);
 				System.out.println("[ReimbursementServlet] allResolvedRequests");
+				response.getWriter().write(objMapper.writeValueAsString(allRequests).toString());
+				break;
+			case "requests" :
+				System.out.println("[ReimbursementServlet] requests");
+				Properties props = new Properties();
+				props.setProperty("employeeId", rootNode.get("employeeId").asText());
+				props.setProperty("todaysDate", rootNode.get("todaysDate").asText());
+				props.setProperty("amount", rootNode.get("amount").asText());
+				props.setProperty("receiptUrl", rootNode.get("receiptUrl").asText());
+				String isSubmitted = reimbursementService.saveReimbursementRequest(props); // returns a jsonString
+				response.getWriter().write(isSubmitted); // :: { isSubmitted: true | false }
 				break;
 			default:
+				response.getWriter().write("{ \"message\": \"Invalid request.\" }");
 				throw new InvalidRequestException();
 			}
-			
-			response.getWriter().write(objMapper.writeValueAsString(allRequests).toString());
 		} catch (NullPointerException e) {
 			response.getWriter().write("{\"message\": \"Something went wrong during fetch.\"}");
 		} catch (InvalidRequestException e) {
 			response.getWriter().write("{\"message\": \"Something went wrong during fetch.\"}");
 		}
-
 	}
 
 }

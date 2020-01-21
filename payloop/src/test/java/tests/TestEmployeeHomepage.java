@@ -2,14 +2,19 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import models.Employee;
 import models.EmployeeUserInfo;
@@ -106,7 +111,27 @@ public class TestEmployeeHomepage {
 	
 	@Test
 	public void testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest() {
-		fail("FAIL FIRST / first fail");
+		Boolean boolIsSubmitted = false;
+		ObjectMapper objMapper = new ObjectMapper();
+		Properties props = new Properties();
+		props.setProperty("employeeId", "789012345678");
+		props.setProperty("todaysDate", "01/20/2020");
+		props.setProperty("amount", "232.71");
+		props.setProperty("receiptUrl", "https://picsum.photos/id/237/300/200");
+		String strIsSubmitted = reimbursementService.saveReimbursementRequest(props); // returns a jsonString
+//		String strIsSubmitted = "{ \"isSubmitted\": \"true\" }";
+		try {
+			JsonNode rootNode = objMapper.readTree(strIsSubmitted);
+			boolIsSubmitted = rootNode.get("isSubmitted").asText().equalsIgnoreCase("true");
+			System.out.println("[TestEmployeeHomepage] boolIsSubmitted " + boolIsSubmitted);
+			if (boolIsSubmitted) {
+				assertTrue(true);
+			} else {
+				assertTrue("Reimbursement request failed to confirm", false);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import models.Reimbursement;
 import repositories.dao.ReimbursementDAOImpl;
@@ -20,6 +21,10 @@ public class ReimbursementService {
 
 	public ArrayList<Reimbursement> getAllResolvedRequests(String employeeId) {
 		return this.reimbursementDAOImpl.getAllResolvedRequests(employeeId);
+	}
+	
+	public String saveReimbursementRequest(Properties props) {
+		return this.reimbursementDAOImpl.saveReimbursementRequest(props);
 	}
 
 }

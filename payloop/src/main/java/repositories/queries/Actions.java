@@ -42,4 +42,10 @@ public final class Actions {
 		return "SELECT * FROM reimbursements WHERE employee_id = ? AND reimbursement_status = ?";
 	}
 
+	public static String SAVE_NEW_REIMBURSEMENT_REQUEST() {
+		String insertInto = "INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)";
+		String values = "VALUES (?, ?, ?, ?, ?, ?, ?)";
+		return insertInto + " " + values;
+	}
+
 }

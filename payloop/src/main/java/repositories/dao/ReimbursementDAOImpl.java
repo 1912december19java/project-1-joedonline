@@ -3,6 +3,7 @@ package repositories.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -10,6 +11,7 @@ import models.Reimbursement;
 import repositories.queries.Actions;
 import repositories.queries.MyStatements;
 import repositories.utilities.DataAccessObject;
+import repositories.utilities.RandomGenerator;
 
 public class ReimbursementDAOImpl extends DataAccessObject implements ReimbursementDAO {
 
@@ -79,6 +81,30 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 			e.printStackTrace();
 		}
 		return allResolvedRequests;
+	}
+
+	public String saveReimbursementRequest(Properties props) {
+		String jsonString = "{ \"isSubmitted\": false }";
+		try {
+			stmt = MyStatements.sendQuery(Actions.SAVE_NEW_REIMBURSEMENT_REQUEST());
+			String reimbursementId = "R" + RandomGenerator.digits(7);
+			System.out.println("[ReimbursementDAOImpl] reimbursementId: " + reimbursementId);
+			DecimalFormat decimalFormat = new DecimalFormat("#.##");
+			Double amount = Double.parseDouble(props.getProperty("amount"));
+			System.out.println("[ReimbursementDAOImpl] amount: " + decimalFormat.format(amount));
+			stmt.setString(1, reimbursementId);
+			stmt.setDouble(2, amount);
+			stmt.setString(3, "pending");
+			stmt.setString(4, props.getProperty("todaysDate"));
+			stmt.setString(5, "tbd");
+			stmt.setString(6, props.getProperty("employeeId"));
+			stmt.setString(7, props.getProperty("receiptUrl"));
+			stmt.execute();
+			jsonString = "{ \"isSubmitted\": true }";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return jsonString;
 	}
 
 	@Override
