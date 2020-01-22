@@ -5,6 +5,12 @@
 ---
 ## DOCS
 
+### Project Motivation
+- The product is done **right**
+- The **right** product is produced
+
+<br>
+
 ### Project Structure
 
 ##### *`src/main/java`*
@@ -46,14 +52,15 @@
 ##### *`src/test/java`*
 - | `TestEmployeeHomepage.java`
 - | `TestLoginLogout.java`
+- | `TestManagerTasks.java`
 
 <br><br>
 
 ---
 
-## PROJECT TRACKER
+## PRODUCT BACKLOG
 
-### `REST API`
+### < Sprint 1 > `REST API`
 
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
@@ -79,6 +86,32 @@
 
 <br><br>
 
+### < Sprint 2 > `FRON END DEV`
+
+| User Story | Status | Date Started | Date Completed
+|-|-|-|-|
+| An Employee can login | not started |  |  |
+| A Manager can login | not started |  |  |
+| An Employee can logout | not started |  |  |
+| A Manager can logout | not started |  |  |
+| An Employee can view the Employee Homepage | not started |  |  |
+| A Manager can view the Manager Homepage | not started |  |  |
+| An Employee can view their information | not started |  |  |
+| An Employee can view their pending reimbursement requests | not started |  |  |
+| An Employee can view their resolved reimbursement requests | not started |  |  |
+| An Employee can submit a reimbursement request | not started |  |  |
+| An Employee can update their information | not started |  |  |
+| A Manager can view all Employees | not started |  |  |
+| A Manager can view all pending requests from all employees | not started |  |  |
+| A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
+| A Manager can view reimbursement requests from a single Employee | not started |  |  |
+| A Manager can view images of the receipts from reimbursement requests | not started |  |  |
+| A Manager can approve/deny pending reimbursement requests | not started |  |  |
+| An Employee receives an email when one of their reimbursement requests is resolved (optional) | not started |  |  |
+| An Employee can upload an image of his/her receipt as part of the reimbursement request | not started |  |  |
+
+<br><br>
+
 ---
 ### DB Design
 - ##### Users
@@ -93,7 +126,7 @@
 
 <br><br>
 
-### Backend stuff
+### Unit Testing
 - ##### TestCases: Users
   * `testWrongPasswordFailsToAuthenticate()`
   * `testRightPasswordSuccessfullyAuthenticates()`
@@ -115,7 +148,7 @@
 
 - ##### TestCases: Manager
   * `testManagerIsAbleToRetrieveAllEmployeeInformation()`
-  * `testManagerIsAbleToFilterAllEmployeeInformationToOnlyPendingRequests()`
+  * `testManagerIsAbleToRetrieveAllPendingRequestsWithEmployeeNames()`
 
 <br><br>
 
