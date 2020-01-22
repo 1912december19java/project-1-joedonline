@@ -68,9 +68,6 @@ public class TestManagerTasks {
 	@Test
 	public void testManagerIsAbleToRetrieveAllPendingRequestsWithEmployeeNames() {
 		
-		// "Servlet" receives get all employee information request...
-		// some other implementation...
-		// process getAllRequest()...
 		ArrayList<Properties> allPropsPendingRequestsWithEmployeeNames = new ArrayList<Properties>();
 		allEmployees = employeeService.getAllEmployees();
 		allEmployees.forEach((employee) -> {
@@ -92,7 +89,16 @@ public class TestManagerTasks {
 	
 	@Test
 	public void testManagerCanViewReimbursementRequestsFromASingleEmployee() {
-		fail("FIRST FAIL / fail first");
+		
+		Properties propsAllPendingRequestsFromASingleEmployee = new Properties();
+		employee = employeeService.getEmployeeById("567890123456");
+		pendingReimbursementRequests = reimbursementService.getAllPendingRequests(employee.getEmployee_id());
+		propsAllPendingRequestsFromASingleEmployee.setProperty("employeeId", employee.getEmployee_id());
+		propsAllPendingRequestsFromASingleEmployee.setProperty("firstName", employee.getFirstName());
+		propsAllPendingRequestsFromASingleEmployee.setProperty("lastName", employee.getLastName());
+		propsAllPendingRequestsFromASingleEmployee.setProperty("allPendingRequests", pendingReimbursementRequests.toString());
+		System.out.println("[TestManagerTasks] propsAllPendingRequestsFromASingleEmployee: " + propsAllPendingRequestsFromASingleEmployee);
+		assertTrue("Manager can view reimbursement requests from one employee", propsAllPendingRequestsFromASingleEmployee.isEmpty() == false);
 	}
 
 }

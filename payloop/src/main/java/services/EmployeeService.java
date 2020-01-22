@@ -31,7 +31,7 @@ public class EmployeeService {
 		return this.employeeDaoImpl.delete(props);
 	}
 
-	public Employee getEmployeeByIdxx(String employeeId) {
+	public Employee getEmployeeById(String employeeId) {
 		System.out.println("[EmployeeService] getEmployeeById(String employeeId): " + employeeId);
 		return this.employeeDaoImpl.getEmployeeById(employeeId);
 	}
