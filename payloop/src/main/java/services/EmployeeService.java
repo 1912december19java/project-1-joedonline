@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Properties;
 
 import models.Employee;
@@ -11,8 +12,8 @@ public class EmployeeService {
 
 	private EmployeeDAOImpl employeeDaoImpl;
 
-	public EmployeeService(EmployeeDAOImpl employeeDao) {
-		this.employeeDaoImpl = employeeDao;
+	public EmployeeService(EmployeeDAOImpl employeeDaoImpl) {
+		this.employeeDaoImpl = employeeDaoImpl;
 	}
 
 	public Boolean addNew(Properties props) {
@@ -42,6 +43,13 @@ public class EmployeeService {
 	public EmployeeUserInfo getEmployeeWithUserInfo(String employeeId) {
 		System.out.println("[EmployeeService] getEmployeeWithUserInfo() employeId param: " + employeeId);
 		return employeeDaoImpl.getEmployeeWithUserInfo(employeeId);
+	}
+	
+	public ArrayList<Employee> getAllEmployees() {
+		System.out.println("[EmployeeService] getAllEmployees() reached.");
+		ArrayList<Employee> allEmployees = this.employeeDaoImpl.getAllEmployees();
+		System.out.println("[EmployeeService] getAllEmployees() allEmployees: " + allEmployees);
+		return allEmployees;
 	}
 
 }

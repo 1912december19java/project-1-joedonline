@@ -3,6 +3,7 @@ package repositories.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import models.Employee;
@@ -18,6 +19,7 @@ public class EmployeeDAOImpl extends DataAccessObject implements EmployeeDAO {
 	ResultSet rs = null;
 	Employee employee;
 	User user;
+	ArrayList<Employee> allEmployees;
 
 	public EmployeeDAOImpl() {
 		
@@ -146,6 +148,29 @@ public class EmployeeDAOImpl extends DataAccessObject implements EmployeeDAO {
 			);
 		System.out.println("[EmployeeDAOImpl] getEmployeeWithUserInfo() empUserInfo param: " + empUserInfo);
 		return empUserInfo;
+	}
+	
+	@Override
+	public ArrayList<Employee> getAllEmployees() {
+		allEmployees = new ArrayList<Employee>();
+		try {
+			rs = MyStatements.executeQuery(Actions.GET_ALL_EMPLOYEES());
+			System.out.println("[EmployeeDAOImpl] getAllEmployees() -> stmt.execute() rs: " + rs);
+			while (rs.next()) {
+				employee = new Employee();
+				employee.setEmployee_id(rs.getString(1));
+				employee.setFirstName(rs.getString(2));
+				employee.setLastName(rs.getString(3));
+				employee.setCity(rs.getString(4));
+				employee.setState(rs.getString(5));
+				employee.setZipcode(rs.getString(6));
+				allEmployees.add(employee);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("[EmployeeDAOImpl] getAllEmployees() -> allEmployees: " + allEmployees);
+		return allEmployees;
 	}
 
 }

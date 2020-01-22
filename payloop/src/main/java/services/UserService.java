@@ -12,8 +12,8 @@ public class UserService {
 
 	private UserDAOImpl userDaoImpl;
 
-	public UserService(UserDAOImpl userDao) {
-		this.userDaoImpl = userDao;
+	public UserService(UserDAOImpl userDaoImpl) {
+		this.userDaoImpl = userDaoImpl;
 	}
 	
 	public Boolean authenticate(String username, String password) throws SQLException {

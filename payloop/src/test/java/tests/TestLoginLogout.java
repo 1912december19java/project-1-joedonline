@@ -22,7 +22,7 @@ public class TestLoginLogout {
 
 	User user;
 	Connection connection;
-	UserDAOImpl userDao;
+	UserDAOImpl userDaoImpl;
 	UserService userService;
 	UserServlet userServlet;
 	String endpoint;
@@ -41,7 +41,7 @@ public class TestLoginLogout {
 	public void setUp() throws Exception {
 		user = new User("567890123456", "babsbunny", "herpassword", "employee", "babs.bunny@fake.email");
 		connection = ConnectionManager.getConnection();
-		userDao = new UserDAOImpl();
+		userDaoImpl = new UserDAOImpl();
 		userServlet = new UserServlet();
 	}
 
@@ -52,21 +52,21 @@ public class TestLoginLogout {
 
 	@Test
 	public void testWrongPasswordFailsToAuthenticate() throws SQLException {
-		userService = new UserService(userDao);
+		userService = new UserService(userDaoImpl);
 		assertTrue("Wrong password fails to authenticate",
 				userService.authenticate("babsbunny", "notherpassword") == false);
 	}
 
 	@Test
 	public void testRightPasswordSuccessfullyAuthenticates() throws SQLException {
-		userService = new UserService(userDao);
+		userService = new UserService(userDaoImpl);
 		assertTrue("Employee is not able to login", userService.authenticate("babsbunny", "herpassword"));
 	}
 
 	@Test
 	public void testLoginPathIsSentBackToUserAfterSuccessfulLogIn() throws InvalidUsernameOrPasswordException, SQLException {
 		
-		userService = new UserService(userDao);
+		userService = new UserService(userDaoImpl);
 		Boolean isAuthenticated = userService.authenticate("babsbunny", "herpassword");
 		
 		if (isAuthenticated) {
@@ -108,14 +108,14 @@ public class TestLoginLogout {
 
 	@Test
 	public void testEmployeeCanLogout() {
-		userService = new UserService(userDao);
+		userService = new UserService(userDaoImpl);
 		userService.invalidate(user);
 		assertTrue(user.isLoggedIn() == false);
 	}
 	
 	@Test
 	public void testTheRightHomepageURLIsSentBackToClientAfterEmployeeLogsIn() throws InvalidUsernameOrPasswordException, SQLException {	
-		userService = new UserService(userDao);
+		userService = new UserService(userDaoImpl);
 		Boolean isAuthenticated = userService.authenticate(user.getUserName(), user.getUserPass());
 		
 		if (isAuthenticated) {			

@@ -70,4 +70,8 @@ public final class Actions {
 		return insertInto + " " + values;
 	}
 
+	public static String GET_ALL_EMPLOYEES() {
+		return "SELECT * FROM employees";
+	}
+
 }

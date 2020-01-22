@@ -67,10 +67,10 @@
 | An Employee can view their pending reimbursement requests | done | `1/18 15:54:44` | `1/19 21:14:50` |
 | An Employee can view their resolved reimbursement requests | done | `1/18 15:54:44` | `1/20 04:44:21` |
 | An Employee can submit a reimbursement request | done | `1/18 15:54:44` | `1/18 22:47:14` |
-| An Employee can update their information | *in progress* | `1/20/2020` |  |
-| A Manager can view all pending requests from all employees | not started |  |  |
+| An Employee can update their information | *in progress* `::` U/T completed | `1/20 11:31:50` |  |
+| A Manager can view all Employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
+| A Manager can view all pending requests from all employees | *in progress* | `1/21 22:33:03` |  |
 | A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
-| A Manager can view all Employees | not started |  |  |
 | A Manager can view reimbursement requests from a single Employee | not started |  |  |
 | A Manager can view images of the receipts from reimbursement requests | not started |  |  |
 | A Manager can approve/deny pending reimbursement requests | not started |  |  |
@@ -111,6 +111,12 @@
   * `testEmployeeReceivesConfirmationAfterSubmittingAReimbursementRequest()`
   * `testEmployeeInformationReceivedAreNotEmptyAndNotWhiteSpaces()`
 
+<br>
+
+- ##### TestCases: Manager
+  * `testManagerIsAbleToRetrieveAllEmployeeInformation()`
+  * `testManagerIsAbleToFilterAllEmployeeInformationToOnlyPendingRequests()`
+
 <br><br>
 
 ---
@@ -132,7 +138,7 @@
 - ~~A Manager can view the Manager Homepage~~
 - ~~A Manager can logout~~
 - A Manager can approve/deny pending reimbursement requests
-- A Manager can view all pending requests from all employees
+- ~~A Manager can view all pending requests from all employees~~
 - A Manager can view images of the receipts from reimbursement requests
 - A Manager can view all resolved requests from all employees and see which manager resolved it
 - A Manager can view all Employees
