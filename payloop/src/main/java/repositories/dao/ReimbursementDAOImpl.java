@@ -97,8 +97,9 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 			stmt.setString(3, "pending");
 			stmt.setString(4, props.getProperty("todaysDate"));
 			stmt.setString(5, "tbd");
-			stmt.setString(6, props.getProperty("employeeId"));
-			stmt.setString(7, props.getProperty("receiptUrl"));
+			stmt.setString(6, props.getProperty("approvedBy"));
+			stmt.setString(7, props.getProperty("employeeId"));
+			stmt.setString(8, props.getProperty("receiptUrl"));
 			stmt.execute();
 			jsonString = "{ \"isSubmitted\": true }";
 		} catch (SQLException e) {

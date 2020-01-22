@@ -90,6 +90,8 @@ public class ReimbursementServlet extends HttpServlet {
 				props.setProperty("todaysDate", rootNode.get("todaysDate").asText());
 				props.setProperty("amount", rootNode.get("amount").asText());
 				props.setProperty("receiptUrl", rootNode.get("receiptUrl").asText());
+//				props.setProperty("approvedBy", rootNode.get("approvedBy").asText());
+				props.setProperty("approvedBy", "all_by_mickeymouse_fornow");
 				String isSubmitted = reimbursementService.saveReimbursementRequest(props); // returns a jsonString
 				response.getWriter().write(isSubmitted); // :: { isSubmitted: true | false }
 				break;

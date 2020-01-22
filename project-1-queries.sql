@@ -1,5 +1,5 @@
 CREATE TABLE employees (
-	employee_id VARCHAR (64) NOT NULL UNIQUE,
+	employee_id VARCHAR (12) NOT NULL UNIQUE,
 	firstName VARCHAR (64) NOT NULL,
 	lastName VARCHAR (64) NOT NULL,
 	city VARCHAR (64) NOT NULL,
@@ -16,15 +16,6 @@ VALUES ('567890123456', 'Babs', 'Bunny', 'Orlando', 'Florida', '32789');
 
 INSERT INTO employees (employee_id, firstName, lastName, city, state, zipcode)
 VALUES ('789012345678', 'Mickey', 'Mouse', 'Tysons Corner', 'Virginia', '22043');
-
-UPDATE employees
-SET firstName = 'Babs', lastName = 'Bunny', city = 'Cincinnati', state = 'Ohio', zipcode = '41073'
-WHERE employee_id = '567890123456';
-
-SELECT * FROM employees;
-
-DROP TABLE employees;
-
 
 -- GET EMPLOYEE BY ID
 SELECT employee_id, firstName, lastName, city, state, zipcode
@@ -43,11 +34,11 @@ DROP TABLE employees;
 
 --------------------------------------------------------------------------------
 CREATE TABLE ers_users (
-	username VARCHAR (64) NOT NULL UNIQUE,
+	username VARCHAR (32) NOT NULL UNIQUE,
 	userpass VARCHAR (64) NOT NULL,
-	userrole VARCHAR (64) NOT NULL,
-	email VARCHAR (256) UNIQUE,
-	employee_id VARCHAR (64) NOT NULL
+	userrole VARCHAR (32) NOT NULL,
+	email VARCHAR (128) UNIQUE,
+	employee_id VARCHAR (12) NOT NULL
 );
 
 SELECT * FROM ers_users;
@@ -67,8 +58,6 @@ SELECT userpass FROM ers_users WHERE username = 'ronaldmcdonald';
 
 SELECT * FROM ers_users WHERE username = 'mickeymouse';
 
-SELECT * FROM ers_users;
-
 DROP TABLE ers_users;
 
 
@@ -79,36 +68,37 @@ CREATE TABLE reimbursements (
 	reimbursement_status VARCHAR (64) NOT NULL,
 	reimbursement_date_submitted VARCHAR(64) NOT NULL,
 	reimbursement_date_approved VARCHAR(64) NOT NULL,
+	reimbursement_approved_by VARCHAR(64) NOT NULL,
 	employee_id VARCHAR (64) NOT NULL,
 	receipt_url VARCHAR (255)
 );
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1000100', 353.92, 'pending', '01/03/2020', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1000100', 353.92, 'pending', '01/03/2020', 'tbd', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1000110', 190.73, 'pending', '01/08/2020', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1000110', 190.73, 'pending', '01/08/2020', 'tbd', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1000103', 1002.91, 'pending', '01/15/2020', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1000103', 1002.91, 'pending', '01/15/2020', 'tbd', 'tbd', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1000333', 250.00, 'resolved', '01/16/2020', '01/20/2020', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1000333', 250.00, 'resolved', '01/16/2020', '01/20/2020', 'mickeymouse', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R3284552', 300.19, 'resolved', '01/15/2020', '01/17/2020', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R3284552', 300.19, 'resolved', '01/15/2020', '01/17/2020', 'mickeymouse', '789012345678', 'https://picsum.photos/id/237/300/200'); -- mickeymouse
 
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1004198', 250.00, 'pending', '01/12/2020', 'tbd', '567890123456', 'https://picsum.photos/id/237/300/200'); -- babsbunny
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1004198', 250.00, 'pending', '01/12/2020', 'tbd', 'tbd', '567890123456', 'https://picsum.photos/id/237/300/200'); -- babsbunny
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1004100', 333.33, 'resolved', '01/12/2020', '01/12/2020', '567890123456', 'https://picsum.photos/id/237/300/200'); -- babsbunny
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1004100', 333.33, 'resolved', '01/12/2020', '01/12/2020', 'mickeymouse', '567890123456', 'https://picsum.photos/id/237/300/200'); -- babsbunny
 
-INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, employee_id, receipt_url)
-VALUES ('R1005507', 1521.21, 'resolved', '12/14/2019', '01/17/2020', '123456789012', 'https://picsum.photos/id/237/300/200'); -- ronaldmcdonald
+INSERT INTO reimbursements (reimbursement_id, reimbursement_amount, reimbursement_status, reimbursement_date_submitted, reimbursement_date_approved, reimbursement_approved_by, employee_id, receipt_url)
+VALUES ('R1005507', 1521.21, 'resolved', '12/14/2019', '01/17/2020', 'mickeymouse', '123456789012', 'https://picsum.photos/id/237/300/200'); -- ronaldmcdonald
 
-DELETE FROM reimbursements WHERE reimbursement_id = 'R1005507';
+DELETE FROM reimbursements WHERE reimbursement_id = 'RR5886214';
 
 
 -- all pending requests

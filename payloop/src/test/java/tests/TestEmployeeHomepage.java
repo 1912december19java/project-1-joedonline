@@ -119,6 +119,7 @@ public class TestEmployeeHomepage {
 		props.setProperty("todaysDate", "01/20/2020");
 		props.setProperty("amount", "232.71");
 		props.setProperty("receiptUrl", "https://picsum.photos/id/237/300/200");
+		props.setProperty("approvedBy", "mickeymouse");
 		String strIsSubmitted = reimbursementService.saveReimbursementRequest(props); // returns a jsonString
 //		String strIsSubmitted = "{ \"isSubmitted\": \"true\" }";
 		try {

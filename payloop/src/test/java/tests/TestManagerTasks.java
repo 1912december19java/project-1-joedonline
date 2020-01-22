@@ -30,6 +30,7 @@ public class TestManagerTasks {
 	UserService userService;
 	ReimbursementService reimbursementService;
 	ArrayList<Reimbursement> pendingReimbursementRequests;
+	ArrayList<Reimbursement> resolvedReimbursementRequests;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -103,7 +104,16 @@ public class TestManagerTasks {
 	
 	@Test
 	public void testManagerCanViewAllResolvedRequestsAndWhoResolvedIt() {
-		fail("FIRST FAIL / fail first");
+		
+		Properties propsAllResolvedRequestsAndWhoResolvedIt = new Properties();
+		employee = employeeService.getEmployeeById("567890123456");
+		resolvedReimbursementRequests = reimbursementService.getAllResolvedRequests(employee.getEmployee_id());
+		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("employeeId", employee.getEmployee_id());
+		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("firstName", employee.getFirstName());
+		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("lastName", employee.getLastName());
+		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("approvedBy", "unit_test_mickeymouse");
+		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("resolvedReimbursementRequests", resolvedReimbursementRequests.toString());
+		assertTrue("Manager can view all resolved requests and see who resolved it", propsAllResolvedRequestsAndWhoResolvedIt.isEmpty() == false);
 	}
 
 }
