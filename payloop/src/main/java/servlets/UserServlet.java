@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +41,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String[] endpoints = request.getRequestURI().split("/");
+		System.out.println("doGet reached");
 		
 		switch (endpoints[4]) {
 		case "logout":
@@ -63,7 +65,7 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("doPOST reached");
 		String bodyString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 		String[] endpoints = request.getRequestURI().split("/");
 		
@@ -97,22 +99,23 @@ public class UserServlet extends HttpServlet {
 					switch (user.getUserRole()) {
 					case "employee":
 						homepageURL = "/user/employee";
+						response.getWriter().write("{ \"employeeId\": \"" + user.getEmployeeId() + "\", \"path\": \"/logout\", \"homepage\": \"" + homepageURL + "\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
 						break;
 					case "manager":
 						homepageURL = "/user/manager";
+						response.getWriter().write("{ \"employeeId\": \"" + user.getEmployeeId() + "\", \"path\": \"/logout\", \"homepage\": \"" + homepageURL + "\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
 						break;
 					default:
 						homepageURL = "/user/invalid";
 					}
 				} else {
+					response.getWriter().write("{ \"path\": \"\", \"message\": \"Invalid request.\" }");
 					throw new InvalidUsernameOrPasswordException();
 				}
 				
 			} catch (SQLException | InvalidUsernameOrPasswordException e1) {
 				System.out.println("[UserServlet] ERROR: InvalidUsernameOrPasswordException: " + e1);
 			}
-			
-			response.getWriter().write("{ \"path\": \"/logout\", \"homepage\": \"" + homepageURL + "\", \"isLoggedIn\": true, \"message\": \"User is logged in.\" }");
 			break;
 		default:
 			try {

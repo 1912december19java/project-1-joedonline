@@ -90,13 +90,13 @@
 
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
-| An Employee can login | not started |  |  |
-| A Manager can login | not started |  |  |
-| An Employee can logout | not started |  |  |
-| A Manager can logout | not started |  |  |
-| An Employee can view the Employee Homepage | not started |  |  |
-| A Manager can view the Manager Homepage | not started |  |  |
-| An Employee can view their information | not started |  |  |
+| An Employee can login | :heavy_check_mark: |  |  |
+| A Manager can login | :heavy_check_mark: |  |  |
+| An Employee can logout | :heavy_check_mark: |  |  |
+| A Manager can logout | :heavy_check_mark: |  |  |
+| An Employee can view the Employee Homepage | :heavy_check_mark: |  |  |
+| A Manager can view the Manager Homepage | :heavy_check_mark: |  |  |
+| An Employee can view their information | :heavy_check_mark: |  |  |
 | An Employee can view their pending reimbursement requests | not started |  |  |
 | An Employee can view their resolved reimbursement requests | not started |  |  |
 | An Employee can submit a reimbursement request | not started |  |  |
