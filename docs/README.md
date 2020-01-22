@@ -76,7 +76,7 @@
 | An Employee can submit a reimbursement request | done | `1/18 15:54:44` | `1/18 22:47:14` |
 | An Employee can update their information | *in progress* `::` U/T completed | `1/20 11:31:50` |  |
 | A Manager can view all Employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
-| A Manager can view all pending requests from all employees | *in progress* | `1/21 22:33:03` |  |
+| A Manager can view all pending requests from all employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
 | A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
 | A Manager can view reimbursement requests from a single Employee | not started |  |  |
 | A Manager can view images of the receipts from reimbursement requests | not started |  |  |
