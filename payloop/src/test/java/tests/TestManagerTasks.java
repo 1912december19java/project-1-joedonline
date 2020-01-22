@@ -100,5 +100,10 @@ public class TestManagerTasks {
 		System.out.println("[TestManagerTasks] propsAllPendingRequestsFromASingleEmployee: " + propsAllPendingRequestsFromASingleEmployee);
 		assertTrue("Manager can view reimbursement requests from one employee", propsAllPendingRequestsFromASingleEmployee.isEmpty() == false);
 	}
+	
+	@Test
+	public void testManagerCanViewAllResolvedRequestsAndWhoResolvedIt() {
+		
+	}
 
 }
