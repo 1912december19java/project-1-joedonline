@@ -115,5 +115,11 @@ public class TestManagerTasks {
 		propsAllResolvedRequestsAndWhoResolvedIt.setProperty("resolvedReimbursementRequests", resolvedReimbursementRequests.toString());
 		assertTrue("Manager can view all resolved requests and see who resolved it", propsAllResolvedRequestsAndWhoResolvedIt.isEmpty() == false);
 	}
+	
+	@Test
+	public void testManagerCanViewImagesOfReceiptsFromReimbursementRequests() {
+		
+		fail("FIRST FAIL / fail first");
+	}
 
 }

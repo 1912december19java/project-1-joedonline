@@ -151,6 +151,7 @@
   * `testManagerIsAbleToRetrieveAllPendingRequestsWithEmployeeNames()`
   * `testManagerCanViewReimbursementRequestsFromASingleEmployee()`
   * `testManagerCanViewAllResolvedRequestsAndWhoResolvedIt()`
+  * `testManagerCanViewImagesOfReceiptsFromReimbursementRequests()`
 
 <br><br>
 
