@@ -89,5 +89,10 @@ public class TestManagerTasks {
 		assertTrue("Manager is able to retrieve all employee information", allPropsPendingRequestsWithEmployeeNames.isEmpty() == false);
 		
 	}
+	
+	@Test
+	public void testManagerCanViewReimbursementRequestsFromASingleEmployee() {
+		fail("FIRST FAIL / fail first");
+	}
 
 }

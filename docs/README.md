@@ -77,8 +77,8 @@
 | An Employee can update their information | *in progress* `::` U/T completed | `1/20 11:31:50` |  |
 | A Manager can view all Employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
 | A Manager can view all pending requests from all employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
+| A Manager can view reimbursement requests from a single Employee | *in progress* |  |  |
 | A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
-| A Manager can view reimbursement requests from a single Employee | not started |  |  |
 | A Manager can view images of the receipts from reimbursement requests | not started |  |  |
 | A Manager can approve/deny pending reimbursement requests | not started |  |  |
 | An Employee receives an email when one of their reimbursement requests is resolved (optional) | not started |  |  |
@@ -149,6 +149,7 @@
 - ##### TestCases: Manager
   * `testManagerIsAbleToRetrieveAllEmployeeInformation()`
   * `testManagerIsAbleToRetrieveAllPendingRequestsWithEmployeeNames()`
+  * `testManagerCanViewReimbursementRequestsFromASingleEmployee()`
 
 <br><br>
 
