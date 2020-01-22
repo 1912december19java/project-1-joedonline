@@ -54,5 +54,10 @@ public class TestManagerTasks {
 			assertTrue(true);
 		}
 	}
+	
+	@Test
+	public void testManagerIsAbleToFilterAllEmployeeInformationToOnlyPendingRequests() {
+		fail("FIRST FAIL / fail first");
+	}
 
 }
