@@ -8,6 +8,9 @@
 ### Project Motivation
 - The product is done **right**
 - The **right** product is produced
+  * Don't create anything the client didn't ask for
+  * Keep it test-driven
+  * Stick to the user stories
 
 <br>
 
@@ -79,10 +82,10 @@
 | A Manager can view all pending requests from all employees | *in progress* `::` U/T completed | `1/21 22:33:03` |  |
 | A Manager can view reimbursement requests from a single Employee | *in progress* `::` U/T completed | `1/22 03:07:55` |  |
 | A Manager can view all resolved requests from all employees and see which manager resolved it | *in progress* `::` U/T completed | `1/22 03:41:26` |  |
-| A Manager can view images of the receipts from reimbursement requests | not started |  |  |
 | A Manager can approve/deny pending reimbursement requests | not started |  |  |
 | An Employee receives an email when one of their reimbursement requests is resolved (optional) | not started |  |  |
 | An Employee can upload an image of his/her receipt as part of the reimbursement request | not started |  |  |
+| A Manager can view images of the receipts from reimbursement requests | not started |  |  |
 
 <br><br>
 
@@ -90,25 +93,25 @@
 
 | User Story | Status | Date Started | Date Completed
 |-|-|-|-|
-| An Employee can login | :heavy_check_mark: |  |  |
-| A Manager can login | :heavy_check_mark: |  |  |
-| An Employee can logout | :heavy_check_mark: |  |  |
-| A Manager can logout | :heavy_check_mark: |  |  |
-| An Employee can view the Employee Homepage | :heavy_check_mark: |  |  |
-| A Manager can view the Manager Homepage | :heavy_check_mark: |  |  |
-| An Employee can view their information | :heavy_check_mark: |  |  |
+| An Employee can login | not started |  |  |
+| A Manager can login | not started |  |  |
+| An Employee can logout | not started |  |  |
+| A Manager can logout | not started |  |  |
+| An Employee can view the Employee Homepage | not started |  |  |
+| A Manager can view the Manager Homepage | not started |  |  |
+| An Employee can view their information | not started |  |  |
 | An Employee can view their pending reimbursement requests | not started |  |  |
 | An Employee can view their resolved reimbursement requests | not started |  |  |
 | An Employee can submit a reimbursement request | not started |  |  |
 | An Employee can update their information | not started |  |  |
 | A Manager can view all Employees | not started |  |  |
 | A Manager can view all pending requests from all employees | not started |  |  |
-| A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
 | A Manager can view reimbursement requests from a single Employee | not started |  |  |
-| A Manager can view images of the receipts from reimbursement requests | not started |  |  |
+| A Manager can view all resolved requests from all employees and see which manager resolved it | not started |  |  |
 | A Manager can approve/deny pending reimbursement requests | not started |  |  |
 | An Employee receives an email when one of their reimbursement requests is resolved (optional) | not started |  |  |
 | An Employee can upload an image of his/her receipt as part of the reimbursement request | not started |  |  |
+| A Manager can view images of the receipts from reimbursement requests | not started |  |  |
 
 <br><br>
 
