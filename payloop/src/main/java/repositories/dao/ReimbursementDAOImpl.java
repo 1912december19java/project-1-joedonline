@@ -1,11 +1,15 @@
 package repositories.dao;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Properties;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import models.Reimbursement;
 import repositories.queries.Actions;
@@ -27,6 +31,7 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 	public ArrayList<Reimbursement> getAllPendingRequests(String employeeId) {
 		ArrayList<Reimbursement> allPendingRequests = new ArrayList<Reimbursement>();
 		reimbursement = new Reimbursement();
+		ObjectMapper objMapper = new ObjectMapper();
 		try {
 			stmt = MyStatements.sendQuery(Actions.GET_ALL_BY_REIMBURSEMENT_STATUS());
 			stmt.setString(1, employeeId);
@@ -34,14 +39,25 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 			if (stmt.execute()) {
 				rs = stmt.getResultSet();
 			}
-			System.out.println("[ReimbursementDAOImpl] getAllPendingRequests() -> rs: " + rs);
 			while (rs.next()) {
+				// returning the same values per 'next' item here, need to fix
 				reimbursement.setId(rs.getString(1));
 				reimbursement.setAmount(rs.getDouble(2));
 				reimbursement.setStatus(rs.getString(3));
 				reimbursement.setDateSubmitted(rs.getString(4));
 				reimbursement.setDateApproved(rs.getString(5));
 				reimbursement.setEmployeeId(rs.getString(6));
+				
+				System.out.println("[ReimbursementDAOImpl] reimbursement.toString() " + reimbursement.toString());
+				
+//				JsonNode obj = objMapper.readTree(reimbursement.toString());
+//				reimbursement.setId(obj.get("id").toString());
+//				reimbursement.setAmount(obj.get("amount").asDouble());
+//				reimbursement.setStatus(obj.get("status").toString());
+//				reimbursement.setDateSubmitted(obj.get("dateSubmitted").toString());
+//				reimbursement.setDateApproved(obj.get("dateApproved").toString());
+//				reimbursement.setEmployeeId(employeeId);
+				
 				allPendingRequests.add(reimbursement);
 			}
 			System.out.println(
@@ -66,6 +82,7 @@ public class ReimbursementDAOImpl extends DataAccessObject implements Reimbursem
 			}
 			System.out.println("[ReimbursementDAOImpl] getAllResolvedRequests() -> rs: " + rs);
 			while (rs.next()) {
+				System.out.println("[ReimbursementDAOImpl] while(rs.next()) " + rs.getString(1));
 				reimbursement.setId(rs.getString(1));
 				reimbursement.setAmount(rs.getDouble(2));
 				reimbursement.setStatus(rs.getString(3));

@@ -74,7 +74,7 @@ public class ReimbursementServlet extends HttpServlet {
 			case "pending" :
 				employeeId = rootNode.get("employeeId").asText();
 				allRequests = reimbursementService.getAllPendingRequests(employeeId);
-				System.out.println("[ReimbursementServlet] allPendingRequests");
+				System.out.println("[ReimbursementServlet] allPendingRequests " + allRequests);
 				response.getWriter().write(objMapper.writeValueAsString(allRequests).toString());
 				break;
 			case "resolved" :
